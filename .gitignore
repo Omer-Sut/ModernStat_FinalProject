@@ -19,3 +19,5 @@ venv/
 # Local outputs
 outputs/
 figures/generated/
+/.DS_Store
+data/Crimes2025.csv
