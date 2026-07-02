@@ -6,6 +6,7 @@ import numpy as np
 import pickle
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+from scipy.stats import spearmanr
 import contextily as ctx
 from pyproj import Transformer
 from bidi.algorithm import get_display
@@ -25,6 +26,11 @@ _BASE = os.path.dirname(os.path.abspath(__file__))
 _df_religion = pd.read_excel(os.path.join(_BASE, '../data/cities_israel.xls'),
                               usecols=['symbol', 'דת יישוב']).rename(columns={'symbol': 'YeshuvKod'})
 _RELIGION_MAP = {1: 'Jewish', 2: 'Arab', 3: 'Druze/Other', 4: 'Mixed'}
+
+_CITY_FEATURES = ['population', 'מחוז', 'דת יישוב', 'מעמד מונציפאלי', 'גובה ']
+_FEATURE_LABELS = ['Population', 'District', 'Religion', 'Municipal status', 'Elevation']
+_df_features = pd.read_excel(os.path.join(_BASE, '../data/cities_israel.xls'),
+                              usecols=['symbol'] + _CITY_FEATURES).rename(columns={'symbol': 'YeshuvKod'})
 
 def load_and_merge():
     BASE = os.path.dirname(os.path.abspath(__file__))
@@ -113,6 +119,19 @@ def plot_eigengap(eigenvalues, n=20):
     plt.tight_layout()
     plt.savefig(os.path.join(PLOTS_DIR, 'eigengap.png'), dpi=150)
     plt.close()
+
+def print_correlation_table(labels, rows):
+    print(f"{'Feature':<20}", end='')
+    for label in labels:
+        print(f"  {label:>6}", end='')
+    print()
+    print('-' * (20 + 8 * len(labels)))
+    for feat_label, values, stars in rows:
+        print(f"{feat_label:<20}", end='')
+        for r, s in zip(values, stars):
+            print(f"  {r:+.2f}{s}", end='')
+        print()
+    print()
 
 def plot_clusters(x, y, labels, title, filename):
     mx, my = _itm_to_webmercator.transform(x * 10, y * 10)
@@ -229,6 +248,7 @@ def compute_LW_matrices(V, sigmas, n):
 
 ## Step 4 - EV calculation
 def calc_print_EV(L, x, y, city_names):
+    # get eigenvectors and eigenvalues
     eigenvals, eigenvecs = np.linalg.eigh(L)
 
     for t in range(1, 11): # skipping the trivial 0-eigenvalue vector:
@@ -244,15 +264,37 @@ def spectral_clustering(eigenvecs, k):
     labels = kmeans.fit_predict(v)
     return labels
 
-## Step 6 - analyze cluster ethnicity
+## Step 6 - analyzing ethnicity and correlate eigenvectors with city features
 def analyze_ethnicity(clusters, yeshuv_kods):
+    # pair city with its kod, join the religion df
     df = pd.DataFrame({'cluster': clusters, 'YeshuvKod': yeshuv_kods})
     df = df.merge(_df_religion, on='YeshuvKod', how='left')
+    # convert codes to labels
     df['religion'] = df['דת יישוב'].map(_RELIGION_MAP).fillna('Unknown')
+    # count cluster-religion pairs
     table = df.groupby(['cluster', 'religion']).size().unstack(fill_value=0)
     table.index = [f'Cluster {i+1}' for i in table.index]
     print(table.to_string())
     print()
+
+def correlate_features(eigenvecs, yeshuv_kods):
+    # load df
+    df = pd.DataFrame({'YeshuvKod': yeshuv_kods}).merge(_df_features, on='YeshuvKod', how='left')
+    ev_labels = [f'EV{t}' for t in range(1, 6)]
+    rows = []
+    for col, label in zip(_CITY_FEATURES, _FEATURE_LABELS):
+        feat = df[col].values
+        # mask missing values from correlation computation
+        mask = ~np.isnan(feat)
+        rs, stars = [], []
+        # calculate spearman
+        for t in range(1, 6):
+            r, p = spearmanr(eigenvecs[mask, t], feat[mask])
+            rs.append(r)
+            # check for significance ( uncorrected for BH like in next part)
+            stars.append('*' if p < 0.05 else ' ')
+        rows.append((label, rs, stars))
+    print_correlation_table(ev_labels, rows)
 
 def main():
     df_merged, crime_cols = preprocess(load_and_merge())
@@ -279,6 +321,7 @@ def main():
     plot_clusters(x, y, clusters, title='Spectral Clustering (k=5)', filename='clusters.png')
     # step 6
     analyze_ethnicity(clusters, list(df_merged.index))
+    correlate_features(eigenvecs, list(df_merged.index))
 
 if __name__ == '__main__':
     main()
