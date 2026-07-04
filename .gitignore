@@ -21,3 +21,8 @@ outputs/
 figures/generated/
 /.DS_Store
 data/Crimes2025.csv
+
+# Transformer experiment generated files
+data/transformers/ogb/
+data/transformers/cache/
+data/transformers/checkpoints/

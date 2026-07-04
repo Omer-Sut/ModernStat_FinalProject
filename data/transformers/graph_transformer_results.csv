@@ -1,0 +1,2 @@
+model_name,pool_type,best_epoch,best_valid_rocauc,test_rocauc_at_best_valid,final_train_loss,final_valid_loss,parameter_count
+graph_transformer_mean_max_pool,mean_max,18,0.7906531697040957,0.756576990671894,0.110517262064788,0.0774113489346614,117985
