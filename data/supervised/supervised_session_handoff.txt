@@ -1,0 +1,667 @@
+Supervised learning session handoff
+Last updated: 2026-07-03
+
+Purpose
+-------
+This file is the running handoff/context note for the supervised-learning part of the final project.
+Keep it updated as the work continues. It should preserve the important preprocessing decisions,
+outputs, lasso-path interpretation, report wording, and open questions for the next stages.
+
+Assignment context
+------------------
+Dataset: Israeli Bureau of Statistics economic literacy survey.
+Task: predict whether an individual has debt.
+Codebook: data/H20121242Codebook.xls.
+Raw data: data/H20121242Data.csv.
+
+Assignment asks, for supervised learning:
+1. Describe preprocessing steps in the project report.
+2. Compute and plot the lasso path for classification, not regression.
+3. Based on the path, state the most important features for the prediction task.
+Later parts: PCA, train/test models, learner diversity, and majority-vote/meta learner.
+
+Notebook/source of truth
+------------------------
+Main notebook:
+code/SupervisedLearning.ipynb
+
+Current state:
+- code/SupervisedLearning.ipynb was refactored to a shorter sklearn-based version on 2026-07-04.
+- The previous manual NumPy/Pandas/PIL version is saved as code/SupervisedLearning_manual_backup.ipynb.
+- Manual reference result CSVs are saved under data/supervised/manual_reference/.
+- The sklearn notebook keeps the same Q-style section structure and PNG-only plotting policy.
+- This Codex runtime does not have sklearn/scipy installed, so the sklearn notebook was syntax-checked here but
+  should be executed locally in an environment with scikit-learn installed.
+
+Preprocessing summary
+---------------------
+Raw CSV encoding:
+- Raw data is read with cp1255 / Windows Hebrew encoding, not UTF-8.
+- All generated CSV outputs are written as UTF-8.
+
+Label definition:
+- Hovot == 2 -> y_debt = 1, debt.
+- Hovot == 1 -> y_debt = 0, no debt.
+- Missing Hovot rows are not used as labeled training data; they are exported separately.
+
+Leakage exclusions:
+- Hovot is the label source and is excluded from X.
+- Hovot2, Hovot3, Hovot4, Hovot5, Hovot6, Hovot7, Hovot8, Hovot9, HovotLechatzim are excluded
+  from features because they are debt-detail/follow-up variables and would leak label information.
+
+Other exclusions from model features:
+- SerialNumber is kept only as ID metadata.
+- Shana is constant and not useful.
+- nn is survey/sample expansion weight. It is kept as sample_weight metadata, not as a feature.
+- Free-text "פרט" columns are excluded from model features and audited separately.
+
+Free-text handling:
+- Text columns: OverVaI7, Halvaa10, Hovot9, Hashkaot10, HipusM9, MekorotM10.
+- These columns are fully excluded from supervised_labeled.csv and supervised_unlabeled_hovot_missing.csv.
+- They are exported only to free-text audit files.
+- Cleanup rule added: if a free-text "פרט" field contains only a single valid numeric answer code
+  for that question's scale, treat that value as blank rather than real text.
+- This removed 15 mistaken single-code text entries.
+
+Free-text counts after cleanup:
+- 95 real free-text entries.
+- 81 people with at least one real free-text value.
+- 78 labeled people with real free text.
+- 3 unlabeled people with real free text.
+- Among labeled people with real free text: 46 no-debt, 32 debt.
+
+Feature engineering summary
+---------------------------
+Profile variables:
+- Nominal/categorical fields were one-hot encoded: district, gender, family status,
+  population group, religion/language, living arrangement, employment status, profession.
+- Ordered/binned fields were mapped to meaningful numeric values: household size, age,
+  years of education, household income, work income.
+- Open-ended top bins use an extrapolated representative value and an additional top-bin indicator.
+- Example: age bin 20-24 is mapped to 23; 75+ is mapped to 80 and has top-bin flag.
+- Income codes 98/99 are treated as unknown/refused flags, not as large numeric incomes.
+
+Quiz variables:
+- Q2 balance tracking score order: 2 > 3 > 4 > 5 > 1.
+- Q5 banking event frequency: 1 best, 5 worst.
+- Q7 credit cards: 1->0, 2->1, 3->2, 4->3, 5->4.5 plus top-bin flag.
+- Q20 financial knowledge: correct answer for all subquestions is yes; score yes > IDK > no.
+- Q21 interest calculation: 1020 highest; 1000-1500 good; IDK code 2 middle; >1500 low; <1000 lowest.
+- Q22 score order: 1 > 2 > 3 > 5 > 4.
+- Q23 score order: 2 > 3 > 1 > 4.
+- Q24: higher value means more financial-information search.
+- Q25: positive and negative attitude statements scored according to direction; code 5 is zero plus not-relevant flag.
+- Q26: topics 1-6 are equal interest indicators; topic 7 marks no need to expand knowledge.
+- Q27: non-ordinal source-interest indicators.
+- Q29: 1 highest mortgage knowledge, 5 lowest.
+
+Missing/IDK handling:
+- Missing, IDK, not-applicable, and not-relevant signals are kept as explicit indicators where relevant.
+- Remaining NaNs in engineered numeric features are neutral-filled using labeled-row medians so algorithms can run.
+- A neutral-fill audit exists at data/supervised/neutral_fill_audit.csv.
+- Before neutral fill: 55 feature columns had NaNs; 13,659 missing feature values in labeled rows; 864 in unlabeled rows.
+
+Generated preprocessing outputs
+-------------------------------
+data/supervised/supervised_labeled.csv
+- Shape: 1153 rows x 447 columns.
+- Columns include SerialNumber, y_debt, sample_weight, and 444 engineered features.
+- y_debt counts: 923 no-debt, 230 debt.
+- No leakage columns.
+- No free-text columns.
+- No NaNs in model features after neutral fill.
+
+data/supervised/supervised_unlabeled_hovot_missing.csv
+- Shape: 61 rows x 447 columns.
+- Rows with missing Hovot label.
+
+data/supervised/feature_dictionary.csv
+- 444 feature rows.
+- Maps engineered feature name -> source columns, feature type, transformation notes.
+
+data/supervised/free_text_audit.csv
+data/supervised/free_text_audit_utf8_bom.csv
+data/supervised/free_text_audit_view.html
+- Real free-text values after cleanup.
+
+data/supervised/free_text_numeric_code_cleanup.csv
+data/supervised/free_text_numeric_code_cleanup_utf8_bom.csv
+data/supervised/free_text_numeric_code_cleanup_view.html
+- The 15 removed single-code text values.
+
+data/supervised/neutral_fill_audit.csv
+- Features that were neutral-filled, how many values were missing, and the fill value used.
+
+Lasso path implementation
+-------------------------
+The lasso path is for classification, not regression.
+Implementation in notebook:
+- L1-penalized logistic regression.
+- Implemented manually with NumPy using warm-started proximal-gradient/FISTA.
+- This avoids using sklearn's standard regression lasso_path, which is not appropriate for classification.
+- Features are standardized before fitting the path.
+- Coefficients shown in the path are standardized coefficients.
+- Constant features are dropped before standardization because their standard deviation is 0.
+
+Lasso path facts:
+- Input samples: 1153.
+- Input engineered features: 444.
+- Constant features dropped: 23.
+- Features used in lasso path: 421.
+- Lambda grid size: 35.
+- lambda_max: 0.1108067941802435.
+- lambda_min: 0.0044322717672097.
+- Active coefficients at strongest lambda: 0.
+- Active coefficients at weakest lambda: 177.
+
+Generated lasso outputs
+-----------------------
+data/supervised/lasso_path_coefficients.csv
+- Coefficient path: 35 rows x 425 columns.
+- Includes lambda, log_lambda, intercept, active_count, and 421 feature coefficient columns.
+
+data/supervised/lasso_path_top_features.csv
+- Summary of features by lasso-path importance.
+- Note: if open in Excel, notebook may skip overwriting it due to PermissionError, but plots still regenerate.
+
+plots/supervised/lasso_path.png
+- Plot currently shows top 15 features only.
+- The plotted set is top 15 by maximum absolute standardized coefficient along the path.
+- The right-side legend is ordered by entry_step ascending.
+- Legend shows: entry_step: x; final_coef: y.
+
+Meaning of lasso quantities
+---------------------------
+entry_step:
+- First lambda-grid index where the feature coefficient becomes nonzero.
+- Smaller entry_step means the feature enters earlier, under stronger regularization.
+- Earlier entry generally indicates a stronger/more stable predictive signal in the lasso path.
+
+final_coef:
+- Coefficient value at the last point of the path, where lambda is smallest.
+- It is not used as a feature value in later models.
+- It is only an interpretation of the L1-logistic model at the weakest regularization point tested.
+- Later models should use selected feature columns from X and learn their own parameters on the training set.
+
+Sign interpretation:
+- y_debt = 1 means debt.
+- Positive coefficient: higher feature value increases predicted debt odds in the lasso model.
+- Negative coefficient: higher feature value decreases predicted debt odds in the lasso model.
+- Because features are standardized, coefficient magnitudes are comparable across features.
+
+Important caution for report wording
+------------------------------------
+Do not write that selected variables causally affect debt.
+Correct wording:
+"These variables are predictive of the debt label in the L1-regularized logistic model."
+
+Many top features are attitude scores, knowledge scores, missingness indicators, IDK indicators, or one-hot categories.
+For missingness indicators, write carefully:
+"Several missingness indicators entered the path, suggesting that survey response patterns or skip patterns contain
+predictive information about the debt label."
+
+Current lasso top-15 features shown in plot
+------------------------------------------
+These are the current top 15 by max absolute standardized coefficient, displayed in the plot ordered by entry_step.
+
+1. KartisAshNechsam_no
+   entry_step: 1
+   max_abs_standardized_coef: 0.341551
+   final_coef: -0.341551
+   type: indicator
+   source: KartisAshNechsam
+   transformation: no indicator
+
+2. NoseCaspiM3_attitude_score
+   entry_step: 3
+   max_abs_standardized_coef: 0.922943
+   final_coef: -0.922943
+   type: semantic_score
+   source: NoseCaspiM3
+   transformation: Q25 positive statement score: strongly agree highest; not relevant zero
+
+3. NoseCaspiM2_attitude_score
+   entry_step: 5
+   max_abs_standardized_coef: 0.424074
+   final_coef: -0.424074
+   type: semantic_score
+   source: NoseCaspiM2
+   transformation: Q25 negative statement score: strongly disagree highest; not relevant zero
+
+4. has_loan_yes
+   entry_step: 6
+   max_abs_standardized_coef: 0.259269
+   final_coef: -0.239325
+   type: semantic_score
+   source: Halvaa
+   transformation: binary yes/no score
+
+5. HeshbonMaakav_code_3
+   entry_step: 9
+   max_abs_standardized_coef: 0.208133
+   final_coef: -0.208133
+   type: indicator
+   source: HeshbonMaakav
+   transformation: one-hot decision-maker category
+
+6. NoseCaspiM3_attitude_score_not_relevant
+   entry_step: 10
+   max_abs_standardized_coef: 0.665204
+   final_coef: -0.665204
+   type: indicator
+   source: NoseCaspiM3
+   transformation: not-relevant indicator for NoseCaspiM3
+
+7. profession_code_3
+   entry_step: 15
+   max_abs_standardized_coef: 0.256537
+   final_coef: -0.256537
+   type: indicator
+   source: SemelMishlach_wp
+   transformation: one-hot categorical encoding
+
+8. mortgage_knowledge_score
+   entry_step: 15
+   max_abs_standardized_coef: 0.222492
+   final_coef: -0.222492
+   type: semantic_score
+   source: RamatYedaMash
+   transformation: Q29 mortgage knowledge score: 1 highest, 5 lowest
+
+9. MekorotM9_code_1
+   entry_step: 17
+   max_abs_standardized_coef: 0.285278
+   final_coef: -0.285278
+   type: indicator
+   source: MekorotM9
+   transformation: Q27 non-ordinal source-interest one-hot
+
+10. KartisAshS1_idk
+    entry_step: 17
+    max_abs_standardized_coef: 0.207663
+    final_coef: -0.207663
+    type: indicator
+    source: KartisAshS1
+    transformation: IDK indicator
+
+11. Bituhim4_missing
+    entry_step: 18
+    max_abs_standardized_coef: 0.229680
+    final_coef: 0.229680
+    type: indicator
+    source: Bituhim4
+    transformation: one-hot insurance answer: yes/no/IDK/no need
+
+12. NosCas3_knowledge_score_missing
+    entry_step: 20
+    max_abs_standardized_coef: 0.232209
+    final_coef: -0.232209
+    type: indicator
+    source: NosCas3
+    transformation: missing indicator for NosCas3
+
+13. Hashkaot6_no
+    entry_step: 23
+    max_abs_standardized_coef: 0.213354
+    final_coef: -0.213354
+    type: indicator
+    source: Hashkaot6
+    transformation: no indicator
+
+14. Bituhim5_missing
+    entry_step: 24
+    max_abs_standardized_coef: 0.209594
+    final_coef: -0.209594
+    type: indicator
+    source: Bituhim5
+    transformation: one-hot insurance answer: yes/no/IDK/no need
+
+15. MekorotM4_missing
+    entry_step: 27
+    max_abs_standardized_coef: 0.210553
+    final_coef: 0.210553
+    type: indicator
+    source: MekorotM4
+    transformation: Q27 non-ordinal source-interest one-hot
+
+Top-feature interpretation draft for report
+-------------------------------------------
+Based on the L1-logistic lasso path, the most predictive features include financial behavior/attitude
+scores from Q25, loan ownership, credit-card blocking status, financial decision-maker categories,
+profession category, mortgage-knowledge score, and several response-pattern indicators such as IDK
+and missingness flags.
+
+Important: interpret these as predictive associations, not causal effects.
+The fact that missingness and IDK indicators enter the path suggests that how respondents answer or skip
+some survey questions carries predictive information about the debt label.
+
+Potential concise answer:
+"The earliest and/or strongest lasso-path features were KartisAshNechsam_no, NoseCaspiM3_attitude_score,
+NoseCaspiM2_attitude_score, has_loan_yes, HeshbonMaakav_code_3, NoseCaspiM3_attitude_score_not_relevant,
+profession_code_3, mortgage_knowledge_score, MekorotM9_code_1, and several IDK/missingness indicators.
+These should be interpreted as variables predictive of debt in the L1-regularized logistic model rather
+than causal determinants of debt."
+
+PCA implementation and outputs
+------------------------------
+PCA was added to code/SupervisedLearning.ipynb in the same supervised notebook.
+
+Implementation:
+- Input is data/supervised/supervised_labeled.csv.
+- X excludes SerialNumber, y_debt, and sample_weight.
+- X is standardized before PCA because engineered features mix numeric bins, semantic scores, binary indicators,
+  one-hot indicators, and missingness indicators.
+- Constant features are dropped before standardization.
+- PCA is computed with NumPy SVD of standardized X, no sklearn dependency.
+- Leading 4 principal components are computed as required by the assignment.
+- Component scores are alpha_i = X_standardized v_i.
+- PR-AUC is computed manually from alpha_i and y_debt.
+- Because PCA signs are arbitrary, both alpha_i and -alpha_i PR-AUC are reported; best_orientation is used only
+  for relevance interpretation.
+
+PCA input facts:
+- Samples: 1153.
+- Engineered features before dropping constants: 444.
+- Constant features dropped: 23.
+- Features used in PCA: 421.
+
+Generated PCA outputs:
+- data/supervised/pca_explained_variance.csv
+- data/supervised/pca_top_loadings.csv
+- data/supervised/pca_pr_auc.csv
+- data/supervised/pca_component_scores.csv
+- data/supervised/pca_loading_leakage_audit.csv
+- plots/supervised/pca_pc1_loadings.png
+- plots/supervised/pca_pc2_loadings.png
+- plots/supervised/pca_pc3_loadings.png
+- plots/supervised/pca_pc4_loadings.png
+
+Explained variance:
+- PC1: 7.10%, cumulative 7.10%.
+- PC2: 5.50%, cumulative 12.60%.
+- PC3: 3.37%, cumulative 15.97%.
+- PC4: 3.22%, cumulative 19.19%.
+
+PR-AUC relevance of component scores:
+- Debt prevalence is 230 / 1153 = 0.19948, so a random score has expected PR-AUC about 0.20.
+- PC1: PR-AUC alpha = 0.232, PR-AUC -alpha = 0.176, best = 0.232, lift over baseline = +0.033.
+- PC2: PR-AUC alpha = 0.229, PR-AUC -alpha = 0.181, best = 0.229, lift over baseline = +0.030.
+- PC3: PR-AUC alpha = 0.282, PR-AUC -alpha = 0.155, best = 0.282, lift over baseline = +0.082.
+- PC4: PR-AUC alpha = 0.334, PR-AUC -alpha = 0.150, best = 0.334, lift over baseline = +0.135.
+
+PCA missingness/leakage audit:
+- The audit file data/supervised/pca_loading_leakage_audit.csv classifies the top 30 loadings for each of PC1-PC4.
+- Target-branch rows among these top loadings: 0.
+- Hovot, Hovot2-Hovot9, and HovotLechatzim remain excluded before PCA, so direct debt-detail leakage is not present
+  in the current PCA loading table.
+- Some high-loading missingness indicators come from post-target questionnaire blocks, such as Hashkaot Q16,
+  Bituhim Q18, NosCas Q20, NoseCaspi Q25, and Mekorot Q27. These are not mechanically Hovot-derived, but they
+  should still be interpreted cautiously as response-pattern or skip-pattern information.
+- Being asked after Q14 is not automatically leakage; the dangerous case is a variable whose missingness is created
+  only because the respondent answered the debt target or a debt-detail branch. The current top-loading audit did
+  not find such Hovot-branch features.
+
+PCA loading interpretation:
+- PC1 is dominated by credit-card question missingness indicators, especially KartisAshS* and KartisAshP*
+  missingness, plus some credit-card count/financial-knowledge features.
+- PC2 is dominated by investment/savings question missingness and no-answer indicators, plus aggregate IDK signal.
+- PC3 is dominated by loan-related variables: has_loan_yes and Halvaa* missing/no indicators.
+- PC4 is dominated by IDK aggregate features and loan-related missingness/no indicators.
+
+PCA relevance interpretation draft:
+"The first four principal components together explain about 19.2% of the standardized feature variance.
+Their largest loadings are not single raw demographic variables, but groups of engineered indicators that reflect
+survey structure: credit-card skip/missing patterns, investment-question response patterns, loan-related variables,
+and IDK/missingness aggregates. PR-AUC values based on the component scores are modest but should be compared with
+the debt-prevalence baseline of about 0.20; PC4 has the largest PR-AUC among the first four components (about 0.334),
+suggesting some relevance to the debt label, but the
+principal components are primarily directions of variance in X rather than directions optimized for predicting y."
+
+Important PCA caution for report:
+- PCA is unsupervised and does not use y_debt to compute v_i.
+- Large variance components are not necessarily the most predictive components.
+- Here, component relevance to y is checked only afterward with PR-AUC of alpha_i.
+- Since many large loadings are missingness/skip-pattern indicators, describe them as response-pattern variance,
+  not causal financial mechanisms.
+- PCA signs are arbitrary, so comparing alpha_i and -alpha_i is the correct way to orient each component for PR-AUC.
+
+Part 4 supervised model training and evaluation
+-----------------------------------------------
+Part 4 was added to code/SupervisedLearning.ipynb in the same supervised notebook.
+
+Implementation:
+- Input is data/supervised/supervised_labeled.csv.
+- y_debt is the label; SerialNumber and sample_weight are metadata, not features.
+- Main F1 scores are unweighted positive-class F1 for y_debt = 1.
+- Deterministic stratified split with seed 42.
+- Train set: 768 rows, with 615 no-debt and 153 debt.
+- Test set: 385 rows, with 308 no-debt and 77 debt.
+- 5-fold stratified CV is done inside the training set only.
+- Standardization is fit inside each CV fold using only that fold's training rows; final standardization is fit on
+  the full training set only.
+- Thresholds 0.20 through 0.60 by 0.05 are tuned by CV because the positive class is about 20%.
+- Models:
+  1. L2 logistic regression.
+  2. KNN with Euclidean distance.
+  3. RBF-kernel logistic regression.
+- Feature sets:
+  1. full_features: all 444 engineered features before train-constant dropping.
+  2. lasso_top30: top 30 features selected by a training-only L1-logistic lasso path.
+- The lasso_top30 selector uses the outer training labels only, never the held-out test labels.
+
+Generated Part 4 outputs:
+- data/supervised/model_split_assignments.csv
+- data/supervised/model_cv_results_part4.csv
+- data/supervised/model_performance_part4.csv
+- data/supervised/model_predictions_part4.csv
+- data/supervised/model_lasso_top30_features_part4.csv
+- plots/supervised/part4_f1_scores.png
+
+Final Part 4 table:
+- kernel_logistic_rbf, full_features: gamma_multiplier=2.0, l2=0.01, threshold=0.20,
+  CV F1=0.430, train F1=0.467, test F1=0.420.
+- kernel_logistic_rbf, lasso_top30: gamma_multiplier=2.0, l2=0.01, threshold=0.25,
+  CV F1=0.561, train F1=0.579, test F1=0.575. Originally selected by Part 4 CV, later superseded for Part 5.
+- KNN, full_features: Euclidean, k=15, threshold=0.20,
+  CV F1=0.416, train F1=0.406, test F1=0.371.
+- KNN, lasso_top30: Euclidean, k=35, threshold=0.25,
+  CV F1=0.579, train F1=0.560, test F1=0.532. Originally selected by Part 4 CV, later superseded for Part 5.
+- L2 logistic, full_features: l2=0.1, threshold=0.30,
+  CV F1=0.541, train F1=0.783, test F1=0.571.
+- L2 logistic, lasso_top30: l2=0.01, threshold=0.40,
+  CV F1=0.640, train F1=0.690, test F1=0.537. Originally selected by Part 4 CV, later superseded for Part 5.
+
+Part 4 interpretation notes for report:
+- The lasso_top30 feature set generally improved CV F1 in the original Part 4 comparison.
+- Best held-out test F1 was kernel logistic with lasso_top30: about 0.575.
+- Logistic regression with all features had similar test F1, about 0.571, but its much higher train F1 suggests
+  stronger overfitting.
+- KNN performed worse than logistic/kernel logistic, especially on the full sparse engineered feature matrix.
+- Hyperparameters and thresholds were selected by training CV only; test F1 was used only for final evaluation.
+- KNN training F1 is computed with leave-one-out style self-neighbor exclusion to avoid an artificially inflated
+  training score.
+
+Feature-count experiment
+------------------------
+A separate notebook was created:
+code/SupervisedFeatureCountExperiment.ipynb
+
+Purpose:
+- Test the same three Part 4 model families on lasso-selected feature subsets of size 15, 30, 50, and 100.
+- Use the same deterministic train/test split, the same 5-fold training-only CV logic, and the same threshold grid.
+- Compute the lasso ranking from the outer training set only, then evaluate top-N prefixes of that ranking.
+
+Generated feature-count outputs:
+- data/supervised/feature_count_split_assignments_part4.csv
+- data/supervised/feature_count_cv_results_part4.csv
+- data/supervised/feature_count_performance_part4.csv
+- data/supervised/feature_count_predictions_part4.csv
+- data/supervised/feature_count_lasso_ranked_features_part4.csv
+- plots/supervised/feature_count_f1_scores.png
+
+Feature-count results:
+- Kernel logistic:
+  top15 CV F1=0.576, train F1=0.580, test F1=0.600. Best by CV and by test.
+  top30 CV F1=0.561, train F1=0.579, test F1=0.575.
+  top50 CV F1=0.573, train F1=0.592, test F1=0.496.
+  top100 CV F1=0.531, train F1=0.587, test F1=0.476.
+- KNN:
+  top15 CV F1=0.573, train F1=0.573, test F1=0.536. Best by test.
+  top30 CV F1=0.579, train F1=0.560, test F1=0.532.
+  top50 CV F1=0.583, train F1=0.582, test F1=0.449. Best by CV.
+  top100 CV F1=0.548, train F1=0.529, test F1=0.462.
+- L2 logistic:
+  top15 CV F1=0.607, train F1=0.621, test F1=0.623. Best by test.
+  top30 CV F1=0.640, train F1=0.690, test F1=0.537.
+  top50 CV F1=0.672, train F1=0.732, test F1=0.520. Best by CV.
+  top100 CV F1=0.666, train F1=0.746, test F1=0.536.
+
+Feature-count interpretation notes:
+- Top15 gives the best held-out test F1 for all three model families in the Euclidean-KNN run.
+- By training-CV F1, the best feature counts are top15 for kernel logistic, top50 for KNN, and top50 for logistic.
+- Larger lasso subsets, especially top50/top100, often increase train F1 but do not improve held-out test F1,
+  suggesting extra features may add variance/overfitting more than useful signal.
+- For honest model selection, use CV-selected feature counts. For report discussion, it is useful to mention that
+  the held-out test results favor the compact top15 set.
+
+Part 5 learner diversity and majority vote
+------------------------------------------
+Part 5 was added to code/SupervisedLearning.ipynb.
+
+Implementation:
+- Uses the three lasso_top15 models from the feature-count experiment, per the user's decision after inspecting
+  held-out test F1.
+- Models used:
+  1. logistic_l2, lasso_top15, l2=0.001, threshold=0.30.
+  2. KNN, lasso_top15, Euclidean distance, k=35, threshold=0.20.
+  3. kernel_logistic_rbf, lasso_top15, gamma_multiplier=2.0, l2=0.01, threshold=0.25.
+- Builds the assignment's training error matrix E with shape 768 x 3.
+- Centers and L2-normalizes each error column to get E_tilde.
+- Computes and saves E_tilde^T E_tilde.
+- Computes a majority vote meta learner where prediction is 1 if at least 2 of the 3 learners predict 1.
+
+Generated Part 5 outputs:
+- data/supervised/learner_errors_part5.csv
+- data/supervised/learner_error_correlation_part5.csv
+- data/supervised/majority_vote_summary_part5.csv
+- data/supervised/majority_vote_predictions_part5.csv
+
+E_tilde^T E_tilde:
+- logistic_l2 vs KNN: 0.5890.
+- logistic_l2 vs kernel_logistic_rbf: 0.7083.
+- KNN vs kernel_logistic_rbf: 0.7571.
+
+Part 5 F1 results:
+- logistic_l2 top15: train F1=0.621, test F1=0.623.
+- KNN top15: train F1=0.573, test F1=0.536.
+- kernel_logistic_rbf top15: train F1=0.580, test F1=0.600.
+- majority vote: train F1=0.591, test F1=0.610.
+
+Part 5 interpretation notes:
+- The learners make positively correlated errors; the largest off-diagonal entry is KNN vs kernel logistic, about 0.757.
+- Majority voting improves over KNN and kernel logistic individually, but it does not improve over the best individual
+  top15 learner, logistic_l2 with test F1 about 0.623.
+- A better combination to suggest in the report is stacking, for example a meta-logistic learner trained on out-of-fold
+  base-model scores, because it can learn unequal weights instead of forcing a 2-of-3 vote.
+
+Open notes for next stages
+--------------------------
+- After running the sklearn notebook locally, run its final "Result Check Against Manual Reference" cell to compare
+  PCA PR-AUC, Part 4 F1, and Part 5 majority-vote F1 against the manual reference outputs.
+- For later modeling, do not use final_coef values as inputs.
+- Select feature columns from X, then fit models on the training set.
+- Part 5 now uses lasso_top15 models from data/supervised/feature_count_predictions_part4.csv.
+- Weighted variants: nn should be used only as sample_weight for supported models, not as a feature.
+- KNN may suffer from many sparse one-hot features; consider a reduced feature set or PCA comparison.
+- If lasso_path_top_features.csv is open in Excel, notebook will not overwrite it; close file before rerunning if needed.
+
+Sklearn notebook local run summary, 2026-07-04
+----------------------------------------------
+The user ran the shortened sklearn-based code/SupervisedLearning.ipynb locally.
+
+Preprocessing outputs:
+- data/supervised/supervised_labeled.csv has 1153 labeled rows and 447 columns:
+  SerialNumber, y_debt, sample_weight, and 444 engineered features.
+- Label counts are unchanged: 923 no-debt rows and 230 debt rows.
+- data/supervised/supervised_unlabeled_hovot_missing.csv has 61 unlabeled rows.
+- data/supervised/feature_dictionary.csv has 444 engineered features:
+  385 indicators, 46 semantic scores, 6 numeric features, 4 aggregate scores,
+  2 aggregate counts, and 1 aggregate rate.
+- data/supervised/free_text_audit.csv has 95 remaining free-text cells after cleanup.
+- data/supervised/free_text_numeric_code_cleanup.csv records 15 single numeric code values removed
+  from free-text detail fields, including SerialNumber 563 in MekorotM10.
+
+Q2 L1-logistic path outputs:
+- data/supervised/lasso_path_top_features.csv was regenerated from the sklearn L1-logistic path.
+- Important terminology: this is not sklearn's regression lasso_path function. It is a grid of
+  LogisticRegression models with penalty="l1" and solver="liblinear".
+- The full-data Q2 top feature ranking changed compared with the manual reference. Top-15 overlap is 4 features.
+  Treat this as an implementation/sensitivity issue to inspect before final report wording.
+- Current full-data top features include financial_knowledge_mean, employment_status_code_1,
+  work_income_mid_missing, interest_calc_2_score, SherutY3_idk,
+  NoseCaspiM3_attitude_score_not_relevant, has_loan_yes, and MekorotM4_missing.
+
+Q3 PCA outputs:
+- data/supervised/pca_explained_variance.csv is stable versus the manual reference.
+- Explained variance ratios:
+  PC1=0.0710, PC2=0.0550, PC3=0.0337, PC4=0.0322; cumulative through PC4=0.1919.
+- Baseline positive debt rate is 0.1995.
+- Best-orientation PR-AUC:
+  PC1=0.2321, PC2=0.2292, PC3=0.2818, PC4=0.3343.
+- PCA interpretation remains cautious: leading PCs are dominated partly by response/missingness patterns,
+  not purely direct economic variables.
+
+Q4 sklearn model outputs:
+- data/supervised/model_split_assignments.csv uses a stratified split:
+  train 768 rows with 615 no-debt and 153 debt; test 385 rows with 308 no-debt and 77 debt.
+- data/supervised/model_cv_results_part4.csv has 207 CV rows:
+  45 logistic_l2, 54 KNN, and 108 RBF-kernel-logistic configurations.
+- Part 4 now evaluates the lasso_top15 feature set chosen from training labels only.
+- Training-only top15 features used by the models:
+  KartisAshNechsam_no; OverVaEruim2_frequency_good_behavior_score;
+  NoseCaspiM3_attitude_score; OverVaEruim3_frequency_good_behavior_score;
+  Halvaa8_yes; NoseCaspiM2_attitude_score; OverVaEruim1_frequency_good_behavior_score;
+  has_loan_yes; KartisAshP1_no; household_income_mid;
+  NoseCaspiM3_attitude_score_not_relevant; mortgage_knowledge_score; Bituhim3_code_2;
+  MekorotM3_code_2; HeshbonMaakav_code_3.
+- Final Part 4 scores:
+  logistic_l2: CV F1=0.5983, train F1=0.6188, test F1=0.6234.
+  KNN Euclidean: CV F1=0.5760, train F1=0.5879, test F1=0.5731.
+  RBF-kernel logistic: CV F1=0.5993, train F1=0.6101, test F1=0.6225.
+- Current sklearn KNN uses Euclidean distance only.
+- The sklearn RBF-kernel logistic implementation uses Nystroem RBF features plus LogisticRegression,
+  so it is an approximation to full kernel logistic regression.
+
+Q5 sklearn majority-vote outputs:
+- Error correlations:
+  logistic_l2 vs KNN=0.6798; logistic_l2 vs kernel_logistic_rbf=0.9226;
+  KNN vs kernel_logistic_rbf=0.7083.
+- F1 scores:
+  logistic_l2 base: train F1=0.6188, test F1=0.6234.
+  KNN base: train F1=0.5879, test F1=0.5731.
+  RBF-kernel logistic base: train F1=0.6101, test F1=0.6225.
+  majority vote: train F1=0.6192, test F1=0.6184.
+- Majority vote does not beat the best individual learner, which is logistic_l2 by test F1.
+
+Output notes for final integration:
+- plots/supervised currently contains PNG files only; no SVG outputs were present after the local run.
+- For report wording, distinguish Q2 full-data lasso-path features from Q4 training-only lasso_top15 features.
+- Before finalizing, decide whether to keep the new sklearn L1-logistic path ranking or restore the manual
+  path implementation for Q2, because the top-feature ranking changed substantially.
+
+Cleanup note
+------------
+After the sklearn notebook run, the old feature-count experiment outputs, UTF-8-BOM helper files,
+HTML text-view helper files, neutral-fill audit, model_lasso_top30 output, old feature-count plot,
+and data/supervised/manual_reference/ folder were deleted.
+
+code/SupervisedLearning.ipynb no longer checks for manual_reference or feature_count_* files.
+Part 4 now creates its own deterministic stratified split and selects lasso_top15 features
+inside the notebook using the training split only.
+
+Integration note
+----------------
+The supervised code was integrated into code/OmerSutovsky_IdoRavid.ipynb under
+Section 1. The integrated version follows the main notebook style: shared imports at
+the top, os.path paths, compact Q1-Q5 markdown headings, and no manual_reference or
+feature_count_* dependencies.

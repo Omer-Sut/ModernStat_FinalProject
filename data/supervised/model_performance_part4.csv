@@ -1,0 +1,4 @@
+model,feature_set,params,mean_cv_f1,train_f1,test_f1,n_train,n_test,n_raw_features
+logistic_l2,lasso_top15,"{'clf__estimator__C': 10.0, 'clf__threshold': 0.3}",0.5983279407528573,0.61875,0.6233766233766234,768,385,15
+knn,lasso_top15,"{'clf__estimator__n_neighbors': 35, 'clf__threshold': 0.25}",0.5759591351865051,0.5878962536023055,0.5730994152046783,768,385,15
+kernel_logistic_rbf,lasso_top15,"{'clf__estimator__C': 10.0, 'clf__threshold': 0.3, 'kernel__gamma': 0.005}",0.5992644536701913,0.610062893081761,0.6225165562913907,768,385,15

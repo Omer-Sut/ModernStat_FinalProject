@@ -1,0 +1,39 @@
+Profile Metrics:
+	1. District: Categorical -> maybe leave as discrete values
+	2. #poeple in house: Numerical -> leave order up to 6 but for 7 it means 7+, maybe have is weight more than the other 6. maybe we can find another column that will hint about the real number.
+	3. Gender: Categorical -> keep as is
+	4. Age: Numerical binned -> take the middle value from each bin. For last bin give more weight?
+	5. Family Status: Categorical -> keep as is
+	6. Population Group: Categorical -> keep as is?
+	7. Religion and Language: Categorical -> keep as is, can be used with 6 to find anomalies in the data
+	8. Living Arrangement: Categorical -> keep as is
+	9. Years of Education: Numerical binned -> take the middle value from each bin. For last bin give more weight?
+	10. Employment status: Categorical -> keep as is
+	11. Total income (in house?): Numerical binned -> take the middle value from each bin. For 10th bin give more weight?
+	12. Total income before deductions, last month: Numerical binned -> take the middle value from each bin. For 10th bin give more weight?
+	13. Profession: Categorical -> keep as is 
+
+Quiz Metrics (with 'A' after the number in the xslx file):
+	1. Simple Yes\No: Categorical -> keep as is
+	2. Kept track of bank balance: Ordinal -> order needs to be 2,3,4,5,1 where 2 needs to get the 'best score' and 1 the lowest
+	4. Yes\No\IDK: Categorical -> I want to have an indicator for each possible answer and to take some sort of product that if the answer is 'IDK' (I don’t know) then it will maybe zero out the value. In all cases other than questions 20 idk needs to be worse than yes or no. in q20 they can all be equal.
+	5. Frequency of banking events: Ordinal -> 1 is good behavior and 5 is bad. And it's on a scale. 
+	6. Person who makes decisions: Categorical -> again, to make the IDK indicator where it's the worst value
+	7. # of credit cards: Numerical -> make all answers -1. that means 1->0 and so on. Give more weight to answer '5' because it has no limit.
+	12. Source of information: Categorical -> again, to make the IDK indicator where it's the worst value
+	14. Existing Debt: Categorical/Ordinal -> IDK is not necessarily worse. We want to predict if in debt so saying 'Yes' (answers 3-5) are strong indications. 3 and 4 needs to also be equal but 5 needs be the strongest indication
+	18. Is Insured: Categorical -> idk (3) needs to be a stronger indication then the rest.
+	21. Interest Calc 1: Numerical -> the correct answer is 1020. answers below 1000 should have the worst score, then answers above 1500, then idk (2), then any answer between 1000-1500 will be ok
+	22. Interest Calc 2: Ordinal -> the correct answer is 1102.5. so the order of score from high to low will be 1,2,3,5,4
+	23. Saving program: Categorical -> the score needs to be from high to low 2,3,1,4
+	24. Searching finance info: Ordinal -> higher number is better. Indicate of financial grasp.
+	25. Agree/Disagree questions: 1 is highly agree, 4 is highly disagree so for positive questions 1 is high score and 4 is low and the opposite case for negative questions. If 5 then we can zero it. Positive questions: 25.1,25.3,25.5,25.6,25.7,25.8,25.10 and Negative questions: 25.2,25.4,25.9
+	26. Fields to increase knowledge: Categorical -> 1-6 are equal and 7 is a worse
+	27.  Will to increase knowledge: Categorical -> not so relevant in my opinion. All equal
+	29. Mortgage knowledge: Ordinal ->  1 is highest and 5 is lowest.
+	
+
+	
+	
+	
+

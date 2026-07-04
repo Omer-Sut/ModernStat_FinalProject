@@ -1,0 +1,390 @@
+feature_name,max_abs_standardized_coef,final_standardized_coef,entry_C,entry_step,source_columns,feature_type,transformation
+financial_knowledge_mean,36.76170502648393,36.76170502648393,1.7842934914518662,20.0,"q20_knowledge_mean,interest_calc_1_score,interest_calc_2_score,saving_program_interest_score,mortgage_knowledge_score",aggregate_score,row-wise mean of related semantic scores
+employment_status_code_1,28.85321694584508,-28.85321694584508,0.3281506835704358,11.0,MatzavTaasuka_C,indicator,one-hot categorical encoding
+work_income_mid_missing,28.32406794165046,-28.32406794165046,2.153657422554886,21.0,HachnasaAvoda,indicator,missing indicator for HachnasaAvoda
+interest_calc_2_score,25.449236320942955,-25.449236320942955,0.15460800979085865,7.0,HishuvRibitDribit,semantic_score,Q22 score order: 1 > 2 > 3 > 5 > 4
+SherutY3_idk,23.393826451252128,-23.393826451252128,0.18661318301485477,8.0,SherutY3,indicator,IDK indicator
+NoseCaspiM3_attitude_score_not_relevant,20.623699659286476,-20.623699659286476,0.05,1.0,NoseCaspiM3,indicator,not-relevant indicator for NoseCaspiM3
+has_loan_yes,20.323122388526233,-20.323122388526233,0.05,1.0,Halvaa,semantic_score,binary yes/no score
+MekorotM4_missing,17.903132072482062,17.903132072482062,0.1061234421212497,5.0,MekorotM4,indicator,Q27 non-ordinal source-interest one-hot
+SherutY4_idk,16.962623431549833,16.962623431549833,0.1280918973960562,6.0,SherutY4,indicator,IDK indicator
+KartisAshP4_missing,16.116565534584602,-16.116565534584602,0.8406688738069995,16.0,KartisAshP4,indicator,missing indicator
+Halvaa2_missing,16.059191569409553,16.059191569409553,0.5770378565332791,14.0,Halvaa2,indicator,missing indicator
+NoseCaspiM3_attitude_score,15.94030985243625,-15.94030985243625,0.05,1.0,NoseCaspiM3,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero
+NosCas1_knowledge_score_missing,15.24192793243858,-15.24192793243858,0.1061234421212497,5.0,NosCas1,indicator,missing indicator for NosCas1
+Bituhim2_code_4,14.634998922215399,-14.634998922215399,0.1061234421212497,5.0,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need
+bank_balance_tracking_score_missing,14.612869038069586,-14.612869038069586,0.5770378565332791,14.0,OverVaMaakav,indicator,missing indicator for OverVaMaakav
+saving_program_interest_score,14.149669572096412,-14.149669572096412,0.3960806665347824,12.0,ShiurRibitBank,semantic_score,Q23 score order: 2 > 3 > 1 > 4
+mortgage_knowledge_score,13.751972898659833,-13.751972898659833,0.05,1.0,RamatYedaMash,semantic_score,"Q29 mortgage knowledge score: 1 highest, 5 lowest"
+NoseCaspiM2_attitude_score,13.72020567744978,-13.72020567744978,0.05,1.0,NoseCaspiM2,semantic_score,Q25 negative statement score: strongly disagree highest; not relevant zero
+interest_calc_1_score,13.713838185965072,-13.713838185965072,0.0879226961002842,4.0,HishuvRibit,semantic_score,Q21 score: 1020 highest; 1000-1500 good; IDK middle; >1500 low; <1000 lowest
+Hashkaot1_idk,13.26454299576021,-13.26454299576021,0.060350425332843426,2.0,Hashkaot1,indicator,IDK indicator
+SherutY6_missing,13.12993619693832,-13.12993619693832,0.3960806665347824,12.0,SherutY6,indicator,missing indicator
+Hashkaot7_idk,12.681687034080635,-12.681687034080635,0.1280918973960562,6.0,Hashkaot7,indicator,IDK indicator
+KartisAshS5_missing,12.645061086976442,12.645061086976442,0.15460800979085865,7.0,KartisAshS5,indicator,missing indicator
+SherutY5_missing,12.439549895977963,-12.439549895977963,0.47807273382980475,13.0,SherutY5,indicator,missing indicator
+Bituhim4_missing,11.94980538309026,11.94980538309026,0.05,1.0,Bituhim4,indicator,one-hot insurance answer: yes/no/IDK/no need
+Bituhim3_missing,11.643435095606097,-11.643435095606097,0.2718710611902285,10.0,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need
+MekorotM3_missing,11.559654777495103,-11.559654777495103,0.22524369935324473,9.0,MekorotM3,indicator,Q27 non-ordinal source-interest one-hot
+Halvaa3_missing,11.504763938358854,11.504763938358854,1.47827747825402,19.0,Halvaa3,indicator,missing indicator
+Hashkaot6_no,11.334139304020104,-11.334139304020104,0.07284347675710216,3.0,Hashkaot6,indicator,no indicator
+KartisAshP2_missing,11.264617034933888,11.264617034933888,0.15460800979085865,7.0,KartisAshP2,indicator,missing indicator
+employment_status_code_3,11.055176138076128,11.055176138076128,0.5770378565332791,14.0,MatzavTaasuka_C,indicator,one-hot categorical encoding
+interest_calc_1_missing,11.046224760940515,11.046224760940515,0.060350425332843426,2.0,HishuvRibit,indicator,Q21 missing indicator
+NoseCaspiM6_attitude_score,10.986324970125285,10.986324970125285,0.07284347675710216,3.0,NoseCaspiM6,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero
+NoseCaspiM2_attitude_score_missing,10.763756240085893,-10.763756240085893,0.1061234421212497,5.0,NoseCaspiM2,indicator,missing indicator for NoseCaspiM2
+Bituhim3_code_4,10.762427370939461,10.762427370939461,0.6964896014987136,15.0,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need
+SherutY3_missing,10.734413767684899,10.734413767684899,0.1061234421212497,5.0,SherutY3,indicator,missing indicator
+SherutY1_idk,10.136901764142738,10.136901764142738,0.2718710611902285,10.0,SherutY1,indicator,IDK indicator
+KartisAshS1_idk,9.769558943084444,-9.769558943084444,0.05,1.0,KartisAshS1,indicator,IDK indicator
+NoseCaspiM10_attitude_score,9.587659454610767,-9.587659454610767,0.07284347675710216,3.0,NoseCaspiM10,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero
+saving_program_interest_score_idk,9.56838011365651,-9.56838011365651,0.0879226961002842,4.0,ShiurRibitBank,indicator,IDK indicator for ShiurRibitBank
+SherutY6_idk,9.470628096182885,-9.470628096182885,0.0879226961002842,4.0,SherutY6,indicator,IDK indicator
+NoseCaspiM6_attitude_score_not_relevant,9.445829253200444,9.445829253200444,0.05,1.0,NoseCaspiM6,indicator,not-relevant indicator for NoseCaspiM6
+HashkaotMaclit_code_8,9.255027955291855,-9.255027955291855,0.05,1.0,HashkaotMaclit,indicator,one-hot decision-maker category
+NosCas3_knowledge_score_idk,9.190981227698247,-9.190981227698247,0.1280918973960562,6.0,NosCas3,indicator,IDK indicator for NosCas3
+SherutY4_missing,9.10490817700888,9.10490817700888,0.1280918973960562,6.0,SherutY4,indicator,missing indicator
+NoseCaspiM5_attitude_score,9.053492897892001,-9.053492897892001,0.2718710611902285,10.0,NoseCaspiM5,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero
+Halvaa7_missing,8.84165406049565,8.84165406049565,1.2247448713915892,18.0,Halvaa7,indicator,missing indicator
+household_income_mid,8.677219436176674,-8.677219436176674,0.1280918973960562,6.0,HachnasaKolelet,numeric,mapped binned numeric value
+MekorotM2_missing,8.635837806967457,-8.635837806967457,0.1061234421212497,5.0,MekorotM2,indicator,Q27 non-ordinal source-interest one-hot
+MekorotM8_missing,8.120223772039054,8.120223772039054,0.2718710611902285,10.0,MekorotM8,indicator,Q27 non-ordinal source-interest one-hot
+age_mid,8.077065380408088,-8.077065380408088,0.1061234421212497,5.0,Gil,numeric,mapped binned numeric value
+HipusM4_info_search_score,7.970759638560908,-7.970759638560908,0.05,1.0,HipusM4,semantic_score,Q24 information-search frequency score: higher is better
+credit_cards_count_top_bin,7.865246122361818,7.865246122361818,0.1061234421212497,5.0,KartisAshKama,indicator,top/open bin indicator for KartisAshKama
+SherutY2_no,7.731540591709008,-7.731540591709008,0.2718710611902285,10.0,SherutY2,indicator,no indicator
+HashkaotMaclit_idk,7.6922440533737255,-7.6922440533737255,0.05,1.0,HashkaotMaclit,indicator,decision-maker IDK indicator
+NoseCaspiM9_attitude_score_not_relevant,7.557030422187947,7.557030422187947,0.18661318301485477,8.0,NoseCaspiM9,indicator,not-relevant indicator for NoseCaspiM9
+SherutY5_idk,7.415706223224282,7.415706223224282,0.6964896014987136,15.0,SherutY5,indicator,IDK indicator
+NosCas3_knowledge_score,7.328026706460316,-7.328026706460316,0.060350425332843426,2.0,NosCas3,semantic_score,"financial knowledge score: yes correct, IDK middle, no lowest"
+MekorotM7_code_2,7.29036926799024,-7.29036926799024,0.05,1.0,MekorotM7,indicator,Q27 non-ordinal source-interest one-hot
+profession_code_0,7.208678742198712,7.208678742198712,0.1280918973960562,6.0,SemelMishlach_wp,indicator,one-hot categorical encoding
+household_size_mid,6.8481248108669215,-6.8481248108669215,0.2718710611902285,10.0,Ms_Nefashot,numeric,mapped binned numeric value
+OverVaAcher_yes,6.791209831814156,-6.791209831814156,0.060350425332843426,2.0,OverVaAcher,indicator,yes indicator
+Hashkaot4_idk,6.70696089081093,6.70696089081093,0.2718710611902285,10.0,Hashkaot4,indicator,IDK indicator
+KartisAshS3_idk,6.697872054130296,6.697872054130296,0.2718710611902285,10.0,KartisAshS3,indicator,IDK indicator
+Halvaa6_no,6.593151098507107,6.593151098507107,0.15460800979085865,7.0,Halvaa6,indicator,no indicator
+KartisAshS4_idk,6.495103497985448,-6.495103497985448,0.15460800979085865,7.0,KartisAshS4,indicator,IDK indicator
+q24_info_search_mean,6.465072918976911,6.465072918976911,0.0879226961002842,4.0,"HipusM1_info_search_score,HipusM2_info_search_score,HipusM3_info_search_score,HipusM4_info_search_score,HipusM5_info_search_score,HipusM6_info_search_score,HipusM7_info_search_score,HipusM8_info_search_score",aggregate_score,row-wise mean of related semantic scores
+preferred_source_number_code_2,6.3661489110785805,-6.3661489110785805,0.07284347675710216,3.0,MakorMahooM,indicator,Q28 selected source number one-hot
+NosCas4_knowledge_score_idk,6.3298710213048155,6.3298710213048155,0.0879226961002842,4.0,NosCas4,indicator,IDK indicator for NosCas4
+Halvaa4_idk,6.240519699505331,6.240519699505331,0.0879226961002842,4.0,Halvaa4,indicator,IDK indicator
+KartisAshP3_missing,6.136893160150706,6.136893160150706,1.014694481966698,17.0,KartisAshP3,indicator,missing indicator
+HashkaotMaclit_code_3,6.099067030874443,-6.099067030874443,0.05,1.0,HashkaotMaclit,indicator,one-hot decision-maker category
+OverVashav_missing,6.09059853030472,6.09059853030472,0.060350425332843426,2.0,OverVashav,indicator,missing indicator for OverVashav
+Bituhim6_missing,6.051830153742587,-6.051830153742587,0.8406688738069995,16.0,Bituhim6,indicator,one-hot insurance answer: yes/no/IDK/no need
+NoseCaspiM9_attitude_score,6.025059951738216,6.025059951738216,0.47807273382980475,13.0,NoseCaspiM9,semantic_score,Q25 negative statement score: strongly disagree highest; not relevant zero
+age_mid_top_bin,6.020593667995695,-6.020593667995695,0.07284347675710216,3.0,Gil,indicator,top/open bin indicator for Gil
+household_income_mid_top_bin,6.009719228677288,6.009719228677288,0.47807273382980475,13.0,HachnasaKolelet,indicator,top/open bin indicator for HachnasaKolelet
+HeshbonMaakav_code_3,5.937316318588134,-5.937316318588134,0.05,1.0,HeshbonMaakav,indicator,one-hot decision-maker category
+NosCas2_knowledge_score_missing,5.936023822641841,5.936023822641841,2.153657422554886,21.0,NosCas2,indicator,missing indicator for NosCas2
+MekorotM2_code_2,5.908572121955022,5.908572121955022,0.1280918973960562,6.0,MekorotM2,indicator,Q27 non-ordinal source-interest one-hot
+Hashkaot1_yes,5.876118416010982,5.876118416010982,0.6964896014987136,15.0,Hashkaot1,indicator,yes indicator
+bank_balance_tracking_score,5.8086794013275584,-5.8086794013275584,0.07284347675710216,3.0,OverVaMaakav,semantic_score,"ordinal score: weekly+ tracking highest, no tracking lowest"
+profession_code_5,5.7747741656885525,-5.7747741656885525,0.22524369935324473,9.0,SemelMishlach_wp,indicator,one-hot categorical encoding
+profession_code_10,5.76185833307328,-5.76185833307328,3.1375978880527504,23.0,SemelMishlach_wp,indicator,one-hot categorical encoding
+work_income_mid,5.761090600591176,-5.761090600591176,0.3281506835704358,11.0,HachnasaAvoda,numeric,mapped binned numeric value
+OverVashav_yes,5.717126072314685,-5.717126072314685,0.3281506835704358,11.0,OverVashav,semantic_score,binary yes/no score
+SherutY2_idk,5.685439184449215,-5.685439184449215,1.7842934914518662,20.0,SherutY2,indicator,IDK indicator
+Halvaa8_no,5.645444605550502,5.645444605550502,3.1375978880527504,23.0,Halvaa8,indicator,no indicator
+HipusM7_info_search_score_missing,5.625811091200771,-5.625811091200771,0.22524369935324473,9.0,HipusM7,indicator,missing indicator for HipusM7
+Halvaa5_missing,5.6042143493505305,-5.6042143493505305,4.5710707766300676,25.0,Halvaa5,indicator,missing indicator
+district_code_6,5.59022600024259,-5.59022600024259,0.05,1.0,Machoz,indicator,one-hot categorical encoding
+MekorotM9_code_2,5.573434165620649,-5.573434165620649,0.060350425332843426,2.0,MekorotM9,indicator,Q27 non-ordinal source-interest one-hot
+Halvaa6_missing,5.564244023798244,-5.564244023798244,1.2247448713915892,18.0,Halvaa6,indicator,missing indicator
+OverVaAcher_missing,5.493413892020552,5.493413892020552,4.5710707766300676,25.0,OverVaAcher,indicator,missing indicator
+OverVaI1_missing,5.424637680761775,-5.424637680761775,0.1280918973960562,6.0,OverVaI1,indicator,missing indicator for OverVaI1
+Halvaa8_missing,5.412106271801243,-5.412106271801243,0.6964896014987136,15.0,Halvaa8,indicator,missing indicator
+MekorotM1_missing,5.3985070053213375,-5.3985070053213375,0.060350425332843426,2.0,MekorotM1,indicator,Q27 non-ordinal source-interest one-hot
+KartisAshS6_yes,5.305428732145625,5.305428732145625,0.3960806665347824,12.0,KartisAshS6,indicator,yes indicator
+HipusM6_info_search_score_missing,5.180970529898793,-5.180970529898793,0.5770378565332791,14.0,HipusM6,indicator,missing indicator for HipusM6
+HipusM5_info_search_score,5.170883336169941,5.170883336169941,0.3960806665347824,12.0,HipusM5,semantic_score,Q24 information-search frequency score: higher is better
+NosCas2_knowledge_score_idk,5.148645041787442,-5.148645041787442,0.060350425332843426,2.0,NosCas2,indicator,IDK indicator for NosCas2
+SherutY1_missing,5.102076287737445,-5.102076287737445,0.3960806665347824,12.0,SherutY1,indicator,missing indicator
+HeshbonMaakav_code_4,5.0841516429518006,-5.0841516429518006,0.07284347675710216,3.0,HeshbonMaakav,indicator,one-hot decision-maker category
+HipusM6_info_search_score,5.081874835127215,-5.081874835127215,0.060350425332843426,2.0,HipusM6,semantic_score,Q24 information-search frequency score: higher is better
+HipusM1_info_search_score_missing,5.050858276116976,5.050858276116976,0.47807273382980475,13.0,HipusM1,indicator,missing indicator for HipusM1
+Hashkaot6_missing,5.049028036687472,5.049028036687472,4.5710707766300676,25.0,Hashkaot6,indicator,missing indicator
+Bituhim6_code_3,5.015911222818629,-5.015911222818629,0.05,1.0,Bituhim6,indicator,one-hot insurance answer: yes/no/IDK/no need
+Bituhim6_idk_strong_signal,5.001551153725164,-5.001551153725164,0.05,1.0,Bituhim6,indicator,IDK is a strong insurance uncertainty signal
+household_size_mid_top_bin,4.950801343405165,4.950801343405165,0.5770378565332791,14.0,Ms_Nefashot,indicator,top/open bin indicator for Ms_Nefashot
+NoseCaspiM2_attitude_score_not_relevant,4.870023788331871,-4.870023788331871,0.05,1.0,NoseCaspiM2,indicator,not-relevant indicator for NoseCaspiM2
+NoseCaspiM4_attitude_score_not_relevant,4.842387425049324,-4.842387425049324,0.6964896014987136,15.0,NoseCaspiM4,indicator,not-relevant indicator for NoseCaspiM4
+Hashkaot9_yes,4.8423678077861565,4.8423678077861565,0.3960806665347824,12.0,Hashkaot9,indicator,yes indicator
+employment_status_code_2,4.807347874542957,4.807347874542957,14.13448310775858,31.0,MatzavTaasuka_C,indicator,one-hot categorical encoding
+preferred_source_number_code_1,4.73591190761017,-4.73591190761017,1.7842934914518662,20.0,MakorMahooM,indicator,Q28 selected source number one-hot
+KartisAshS2_idk,4.718951850138041,4.718951850138041,0.3281506835704358,11.0,KartisAshS2,indicator,IDK indicator
+OverVaAcher_idk,4.695532973595041,-4.695532973595041,0.5770378565332791,14.0,OverVaAcher,indicator,IDK indicator
+OverVaI3_missing,4.677495975211789,4.677495975211789,1.014694481966698,17.0,OverVaI3,indicator,missing indicator for OverVaI3
+NosCas3_knowledge_score_missing,4.65312570242886,-4.65312570242886,0.05,1.0,NosCas3,indicator,missing indicator for NosCas3
+Bituhim1_code_1,4.636748211616051,4.636748211616051,2.153657422554886,21.0,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need
+MekorotM9_missing,4.632588684223255,4.632588684223255,3.787107341348293,24.0,MekorotM9,indicator,Q27 non-ordinal source-interest one-hot
+HipusM8_info_search_score_missing,4.590874552583293,-4.590874552583293,0.07284347675710216,3.0,HipusM8,indicator,missing indicator for HipusM8
+Bituhim1_missing,4.574321113938029,4.574321113938029,0.0879226961002842,4.0,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need
+Hashkaot6_idk,4.545889575140943,4.545889575140943,0.47807273382980475,13.0,Hashkaot6,indicator,IDK indicator
+preferred_source_number_code_3,4.533570637007311,-4.533570637007311,0.1280918973960562,6.0,MakorMahooM,indicator,Q28 selected source number one-hot
+SherutY4_yes,4.516663832293524,-4.516663832293524,0.3960806665347824,12.0,SherutY4,indicator,yes indicator
+knowledge_expansion_no_need,4.478591384663998,-4.478591384663998,0.07284347675710216,3.0,NoseCaspiHarhavaEynCoreh,indicator,selected no need to expand financial knowledge
+Halvaa9_yes,4.4728359853109785,4.4728359853109785,0.05,1.0,Halvaa9,indicator,yes indicator
+NoseCaspiM7_attitude_score_missing,4.449771772130534,4.449771772130534,0.0879226961002842,4.0,NoseCaspiM7,indicator,missing indicator for NoseCaspiM7
+MekorotM3_code_3,4.36959925605402,4.36959925605402,0.8406688738069995,16.0,MekorotM3,indicator,Q27 non-ordinal source-interest one-hot
+Hashkaot5_missing,4.311148814872535,-4.311148814872535,2.599482829448454,22.0,Hashkaot5,indicator,missing indicator
+Halvaa5_idk,4.30453626501568,4.30453626501568,0.05,1.0,Halvaa5,indicator,IDK indicator
+MekorotM3_idk,4.300390868383461,4.300390868383461,0.8406688738069995,16.0,MekorotM3,indicator,Q27 source-interest IDK indicator
+OverVaEruim3_frequency_good_behavior_score,4.277902121832102,-4.277902121832102,0.05,1.0,OverVaEruim3,semantic_score,"frequency score: never is best, usual state is worst"
+preferred_info_source_code_2,4.2744408148138335,-4.2744408148138335,0.18661318301485477,8.0,MakorMuadaf,indicator,Q28 preferred information source one-hot
+NoseCaspiM4_attitude_score_missing,4.252782919836022,-4.252782919836022,0.22524369935324473,9.0,NoseCaspiM4,indicator,missing indicator for NoseCaspiM4
+Halvaa7_no,4.212716225950721,-4.212716225950721,0.47807273382980475,13.0,Halvaa7,indicator,no indicator
+KartisAshS2_no,4.205686669696648,4.205686669696648,0.6964896014987136,15.0,KartisAshS2,indicator,no indicator
+Hashkaot8_yes,4.085483312833697,4.085483312833697,0.1061234421212497,5.0,Hashkaot8,indicator,yes indicator
+KartisAshNechsam_yes,4.075881995060112,4.075881995060112,0.05,1.0,KartisAshNechsam,indicator,yes indicator
+credit_cards_count,4.022713440500826,-4.022713440500826,0.22524369935324473,9.0,KartisAshKama,numeric,credit-card count from coded answers
+OverVaI1_yes,3.971424469732722,3.971424469732722,0.060350425332843426,2.0,OverVaI1,semantic_score,binary yes/no score
+OverVaI5_yes,3.893731792890964,3.893731792890964,0.8406688738069995,16.0,OverVaI5,semantic_score,binary yes/no score
+SherutY2_missing,3.8851775922486373,3.8851775922486373,0.3960806665347824,12.0,SherutY2,indicator,missing indicator
+q25_attitude_mean,3.8786393649045423,3.8786393649045423,1.7842934914518662,20.0,"NoseCaspiM1_attitude_score,NoseCaspiM2_attitude_score,NoseCaspiM3_attitude_score,NoseCaspiM4_attitude_score,NoseCaspiM5_attitude_score,NoseCaspiM6_attitude_score,NoseCaspiM7_attitude_score,NoseCaspiM8_attitude_score,NoseCaspiM9_attitude_score,NoseCaspiM10_attitude_score",aggregate_score,row-wise mean of related semantic scores
+Bituhim4_code_2,3.842366568936627,-3.842366568936627,0.3281506835704358,11.0,Bituhim4,indicator,one-hot insurance answer: yes/no/IDK/no need
+work_income_mid_code_99,3.786064640963549,3.786064640963549,0.0879226961002842,4.0,HachnasaAvoda,indicator,special code 99 indicator for HachnasaAvoda
+HeshbonMaakav_code_6,3.783369914323949,-3.783369914323949,0.0879226961002842,4.0,HeshbonMaakav,indicator,one-hot decision-maker category
+Hashkaot9_missing,3.7694555152476292,-3.7694555152476292,2.599482829448454,22.0,Hashkaot9,indicator,missing indicator
+OverVaI2_missing,3.744016990964126,-3.744016990964126,0.22524369935324473,9.0,OverVaI2,indicator,missing indicator for OverVaI2
+work_income_mid_top_bin,3.743866679417083,3.743866679417083,0.3960806665347824,12.0,HachnasaAvoda,indicator,top/open bin indicator for HachnasaAvoda
+MekorotM1_idk,3.7430879256406273,3.7430879256406273,0.060350425332843426,2.0,MekorotM1,indicator,Q27 source-interest IDK indicator
+KartisAshP3_no,3.725900351154544,-3.725900351154544,0.05,1.0,KartisAshP3,indicator,no indicator
+Bituhim4_idk_strong_signal,3.69882639279858,3.69882639279858,0.2718710611902285,10.0,Bituhim4,indicator,IDK is a strong insurance uncertainty signal
+gender_code_1,3.616363975787956,3.616363975787956,0.3960806665347824,12.0,Minn,indicator,one-hot categorical encoding
+Bituhim2_code_2,3.612053631042878,3.612053631042878,2.153657422554886,21.0,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need
+MekorotM1_code_3,3.601910878818582,3.601910878818582,0.060350425332843426,2.0,MekorotM1,indicator,Q27 non-ordinal source-interest one-hot
+gender_code_2,3.598165046261926,-3.598165046261926,0.3960806665347824,12.0,Minn,indicator,one-hot categorical encoding
+HipusM3_info_search_score,3.5910293599153182,-3.5910293599153182,0.8406688738069995,16.0,HipusM3,semantic_score,Q24 information-search frequency score: higher is better
+Bituhim4_code_3,3.5376585065773973,3.5376585065773973,0.2718710611902285,10.0,Bituhim4,indicator,one-hot insurance answer: yes/no/IDK/no need
+NosCas1_knowledge_score,3.487623596763067,-3.487623596763067,0.2718710611902285,10.0,NosCas1,semantic_score,"financial knowledge score: yes correct, IDK middle, no lowest"
+district_code_5,3.469207492329905,3.469207492329905,0.060350425332843426,2.0,Machoz,indicator,one-hot categorical encoding
+MekorotM6_code_1,3.4513611853552555,-3.4513611853552555,0.22524369935324473,9.0,MekorotM6,indicator,Q27 non-ordinal source-interest one-hot
+NoseCaspiM9_attitude_score_missing,3.4149931771297615,3.4149931771297615,0.2718710611902285,10.0,NoseCaspiM9,indicator,missing indicator for NoseCaspiM9
+living_arrangement_code_2,3.3632235723760457,-3.3632235723760457,0.5770378565332791,14.0,HesderDiyur,indicator,one-hot categorical encoding
+interest_calc_2_score_idk,3.3619217456766934,-3.3619217456766934,0.2718710611902285,10.0,HishuvRibitDribit,indicator,IDK indicator for HishuvRibitDribit
+family_status_code_3,3.3266992893108815,3.3266992893108815,0.3281506835704358,11.0,MatzavMishp,indicator,one-hot categorical encoding
+SherutY2_yes,3.310610945263254,3.310610945263254,5.517321311923108,26.0,SherutY2,indicator,yes indicator
+mortgage_info_source_code_1,3.3076379834566456,-3.3076379834566456,0.5770378565332791,14.0,MashkantaMekorot,indicator,one-hot mortgage information source
+MekorotM5_missing,3.2914931462714137,-3.2914931462714137,1.2247448713915892,18.0,MekorotM5,indicator,Q27 non-ordinal source-interest one-hot
+HashkaotMaclit_code_6,3.290280923344891,3.290280923344891,0.3960806665347824,12.0,HashkaotMaclit,indicator,one-hot decision-maker category
+HashkaotMaclit_code_7,3.2012010171235388,3.2012010171235388,0.3281506835704358,11.0,HashkaotMaclit,indicator,one-hot decision-maker category
+Bituhim1_idk_strong_signal,3.1882936029411915,-3.1882936029411915,0.15460800979085865,7.0,Bituhim1,indicator,IDK is a strong insurance uncertainty signal
+education_years_mid,3.1581352608210937,3.1581352608210937,0.22524369935324473,9.0,ShnotLimudKlali_C,numeric,mapped binned numeric value
+NoseCaspiM6_attitude_score_missing,3.1465409462295257,3.1465409462295257,0.15460800979085865,7.0,NoseCaspiM6,indicator,missing indicator for NoseCaspiM6
+MekorotM6_code_2,3.0981961155896576,3.0981961155896576,0.47807273382980475,13.0,MekorotM6,indicator,Q27 non-ordinal source-interest one-hot
+MekorotM4_code_3,3.089052989170341,-3.089052989170341,0.1280918973960562,6.0,MekorotM4,indicator,Q27 non-ordinal source-interest one-hot
+interest_calc_1_idk,3.084651720517318,-3.084651720517318,0.15460800979085865,7.0,HishuvRibit,indicator,Q21 IDK code indicator
+MekorotM4_idk,3.0592106288955745,-3.0592106288955745,0.1280918973960562,6.0,MekorotM4,indicator,Q27 source-interest IDK indicator
+NoseCaspiM7_attitude_score_not_relevant,3.0527080267378817,3.0527080267378817,0.3960806665347824,12.0,NoseCaspiM7,indicator,not-relevant indicator for NoseCaspiM7
+NoseCaspiM10_attitude_score_not_relevant,2.9982102799359067,-2.9982102799359067,1.2247448713915892,18.0,NoseCaspiM10,indicator,not-relevant indicator for NoseCaspiM10
+family_status_code_5,2.9849033985655566,-2.9849033985655566,0.15460800979085865,7.0,MatzavMishp,indicator,one-hot categorical encoding
+Hashkaot3_yes,2.9406746692198866,-2.9406746692198866,0.1280918973960562,6.0,Hashkaot3,indicator,yes indicator
+OverVaEruim2_frequency_good_behavior_score,2.9294011257476495,-2.9294011257476495,0.05,1.0,OverVaEruim2,semantic_score,"frequency score: never is best, usual state is worst"
+KartisAshS5_no,2.9251781488716078,-2.9251781488716078,0.15460800979085865,7.0,KartisAshS5,indicator,no indicator
+NosCas2_knowledge_score,2.9147025743061716,-2.9147025743061716,0.07284347675710216,3.0,NosCas2,semantic_score,"financial knowledge score: yes correct, IDK middle, no lowest"
+KartisAshP1_idk,2.901959122656836,2.901959122656836,0.1061234421212497,5.0,KartisAshP1,indicator,IDK indicator
+HashkaotMaclit_code_2,2.843832147832483,2.843832147832483,0.1280918973960562,6.0,HashkaotMaclit,indicator,one-hot decision-maker category
+preferred_source_number_code_4,2.8351703541153985,-2.8351703541153985,0.1061234421212497,5.0,MakorMahooM,indicator,Q28 selected source number one-hot
+Bituhim1_code_3,2.8105117496775596,-2.8105117496775596,0.15460800979085865,7.0,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need
+MekorotM4_code_1,2.775384418560494,2.714019410174684,0.3281506835704358,11.0,MekorotM4,indicator,Q27 non-ordinal source-interest one-hot
+Halvaa2_yes,2.72549983150508,-2.72549983150508,14.13448310775858,31.0,Halvaa2,indicator,yes indicator
+MekorotM4_code_2,2.724448147532314,-2.724448147532314,20.592097834673318,33.0,MekorotM4,indicator,Q27 non-ordinal source-interest one-hot
+NoseCaspiM8_attitude_score_missing,2.7211128991374887,-2.7211128991374887,1.2247448713915892,18.0,NoseCaspiM8,indicator,missing indicator for NoseCaspiM8
+KartisAshS1_missing,2.7154218433208817,2.7154218433208817,0.3281506835704358,11.0,KartisAshS1,indicator,missing indicator
+living_arrangement_code_1,2.6995506725863287,2.6995506725863287,0.05,1.0,HesderDiyur,indicator,one-hot categorical encoding
+KartisAshP3_idk,2.6891274134620957,-2.6891274134620957,0.1280918973960562,6.0,KartisAshP3,indicator,IDK indicator
+district_code_7,2.6521764108967236,-2.6521764108967236,0.8406688738069995,16.0,Machoz,indicator,one-hot categorical encoding
+Bituhim5_code_1,2.5575299090356913,-2.5575299090356913,6.659453757450426,27.0,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need
+OverVaEruim1_frequency_good_behavior_score_missing,2.540965453135985,-2.540965453135985,1.2247448713915892,18.0,OverVaEruim1,indicator,missing indicator for OverVaEruim1
+Hashkaot3_idk,2.523514304429633,-2.523514304429633,0.5770378565332791,14.0,Hashkaot3,indicator,IDK indicator
+HipusM7_info_search_score,2.51235363167147,-2.51235363167147,2.153657422554886,21.0,HipusM7,semantic_score,Q24 information-search frequency score: higher is better
+Halvaa3_yes,2.5046254433112476,-2.5046254433112476,0.8406688738069995,16.0,Halvaa3,indicator,yes indicator
+profession_code_9,2.4648505854999834,2.4648505854999834,0.2718710611902285,10.0,SemelMishlach_wp,indicator,one-hot categorical encoding
+Halvaa7_idk,2.43542251759962,-2.43542251759962,0.47807273382980475,13.0,Halvaa7,indicator,IDK indicator
+Hashkaot8_missing,2.4327941101384982,-2.4327941101384982,1.47827747825402,19.0,Hashkaot8,indicator,missing indicator
+district_code_2,2.4305448661891993,2.4305448661891993,0.22524369935324473,9.0,Machoz,indicator,one-hot categorical encoding
+OverVaI5_missing,2.344776780045045,2.344776780045045,0.15460800979085865,7.0,OverVaI5,indicator,missing indicator for OverVaI5
+HeshbonMaakav_missing,2.261285379599806,2.261285379599806,0.05,1.0,HeshbonMaakav,indicator,one-hot decision-maker category
+KartisAshNechsam_missing,2.231270358820386,-2.231270358820386,8.03801733493071,28.0,KartisAshNechsam,indicator,missing indicator
+HipusM2_info_search_score,2.211984883296568,2.211984883296568,0.47807273382980475,13.0,HipusM2,semantic_score,Q24 information-search frequency score: higher is better
+Hashkaot2_no,2.2085547147035,-2.2085547147035,0.2718710611902285,10.0,Hashkaot2,indicator,no indicator
+Bituhim3_code_1,2.193851743432961,-2.193851743432961,1.7842934914518662,20.0,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need
+Hashkaot5_idk,2.1787697597272797,-2.1787697597272797,0.8406688738069995,16.0,Hashkaot5,indicator,IDK indicator
+Hashkaot3_missing,2.166719087770066,2.166719087770066,0.07284347675710216,3.0,Hashkaot3,indicator,missing indicator
+religion_language_code_1,2.139376103551811,2.139376103551811,6.659453757450426,27.0,DatSafa_C,indicator,one-hot categorical encoding
+profession_code_1,2.1314500518430846,2.1314500518430846,0.5770378565332791,14.0,SemelMishlach_wp,indicator,one-hot categorical encoding
+MekorotM6_missing,2.066663310286715,-2.066663310286715,1.7842934914518662,20.0,MekorotM6,indicator,Q27 non-ordinal source-interest one-hot
+credit_cards_count_missing,2.036492038783782,2.036492038783782,0.18661318301485477,8.0,KartisAshKama,indicator,missing indicator for KartisAshKama
+district_code_3,2.020026039600391,-2.020026039600391,0.6964896014987136,15.0,Machoz,indicator,one-hot categorical encoding
+education_years_mid_top_bin,1.9974963919558564,1.9974963919558564,0.1280918973960562,6.0,ShnotLimudKlali_C,indicator,top/open bin indicator for ShnotLimudKlali_C
+Bituhim5_code_4,1.9875656023707151,1.9875656023707151,1.47827747825402,19.0,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need
+HashkaotMaclit_code_5,1.9490583753222028,1.9490583753222028,0.1280918973960562,6.0,HashkaotMaclit,indicator,one-hot decision-maker category
+NoseCaspiM5_attitude_score_missing,1.8979591376861982,1.8979591376861982,0.18661318301485477,8.0,NoseCaspiM5,indicator,missing indicator for NoseCaspiM5
+OverVaEruim2_frequency_good_behavior_score_missing,1.8864681949450508,1.8666661783917446,0.5770378565332791,14.0,OverVaEruim2,indicator,missing indicator for OverVaEruim2
+household_income_mid_code_98,1.8771357580797954,-1.8771357580797954,0.07284347675710216,3.0,HachnasaKolelet,indicator,special code 98 indicator for HachnasaKolelet
+profession_code_2,1.8727394457383066,-1.8727394457383066,0.3281506835704358,11.0,SemelMishlach_wp,indicator,one-hot categorical encoding
+Bituhim1_code_4,1.8643874460921752,-1.8643874460921752,0.6964896014987136,15.0,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need
+knowledge_expansion_topics_count,1.8210241239379865,1.8210241239379865,0.5770378565332791,14.0,"NoseCaspiHarhavaNihul,NoseCaspiHarhavaCarhanut,NoseCaspiHarhavaHalvaot,NoseCaspiHarhavaHishonot,NoseCaspiHarhavaBituhim,NoseCaspiHarhavaMashkanta",aggregate_count,count of selected knowledge-expansion topics among fields 1-6
+KartisAshP2_idk,1.7955824676978231,1.7955824676978231,0.07284347675710216,3.0,KartisAshP2,indicator,IDK indicator
+NosCas4_knowledge_score_missing,1.776061017816424,1.776061017816424,9.701955299916742,29.0,NosCas4,indicator,missing indicator for NosCas4
+MekorotM9_code_1,1.7577158411353688,-1.7577158411353688,0.05,1.0,MekorotM9,indicator,Q27 non-ordinal source-interest one-hot
+KartisAshP2_yes,1.65979694840541,-1.65979694840541,11.710342578204198,30.0,KartisAshP2,indicator,yes indicator
+mortgage_info_source_code_6,1.6421947969561548,-1.6421947969561548,0.1280918973960562,6.0,MashkantaMekorot,indicator,one-hot mortgage information source
+MekorotM1_code_2,1.6255228936794108,-1.6255228936794108,0.2718710611902285,10.0,MekorotM1,indicator,Q27 non-ordinal source-interest one-hot
+interest_calc_2_score_missing,1.6201981924942797,1.6201981924942797,1.014694481966698,17.0,HishuvRibitDribit,indicator,missing indicator for HishuvRibitDribit
+NoseCaspiM1_attitude_score,1.589610973215643,1.589610973215643,0.1061234421212497,5.0,NoseCaspiM1,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero
+OverVaEruim3_frequency_good_behavior_score_missing,1.5713989981246783,1.5713989981246783,0.3281506835704358,11.0,OverVaEruim3,indicator,missing indicator for OverVaEruim3
+HeshbonMaakav_code_1,1.5551884756329224,1.5551884756329224,0.05,1.0,HeshbonMaakav,indicator,one-hot decision-maker category
+Bituhim5_code_2,1.5311384224108329,1.3440013087622125,0.18661318301485477,8.0,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need
+Halvaa9_no,1.5236946899887374,-1.5236946899887374,0.1061234421212497,5.0,Halvaa9,indicator,no indicator
+HashkaotMaclit_code_1,1.5146026814233107,-1.5146026814233107,1.2247448713915892,18.0,HashkaotMaclit,indicator,one-hot decision-maker category
+family_status_code_4,1.5074097457035691,-1.5074097457035691,0.0879226961002842,4.0,MatzavMishp,indicator,one-hot categorical encoding
+SherutY3_yes,1.5022663394255524,-1.5022663394255524,0.1061234421212497,5.0,SherutY3,indicator,yes indicator
+HipusM3_info_search_score_missing,1.496507824185311,-1.496507824185311,0.22524369935324473,9.0,HipusM3,indicator,missing indicator for HipusM3
+OverVaI2_yes,1.4549596096752528,-1.4549596096752528,0.15460800979085865,7.0,OverVaI2,semantic_score,binary yes/no score
+OverVaI6_yes,1.4502904071436902,1.4502904071436902,0.22524369935324473,9.0,OverVaI6,semantic_score,binary yes/no score
+MekorotM7_missing,1.3780263905597714,1.3780263905597714,8.03801733493071,28.0,MekorotM7,indicator,Q27 non-ordinal source-interest one-hot
+Bituhim5_missing,1.3294014748444618,-1.3294014748444618,0.07284347675710216,3.0,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need
+KartisAshS3_yes,1.3234249119193218,1.3234249119193218,0.15460800979085865,7.0,KartisAshS3,indicator,yes indicator
+Hashkaot7_missing,1.321141216572832,1.321141216572832,1.2247448713915892,18.0,Hashkaot7,indicator,missing indicator
+SherutY1_yes,1.2764595651350912,1.2764595651350912,0.05,1.0,SherutY1,indicator,yes indicator
+KartisAshS3_no,1.2695825068802822,-1.2695825068802822,0.8406688738069995,16.0,KartisAshS3,indicator,no indicator
+Hashkaot8_idk,1.2615182334196855,1.2615182334196855,0.3960806665347824,12.0,Hashkaot8,indicator,IDK indicator
+KartisAshS6_missing,1.2583157591118672,-1.2583157591118672,14.13448310775858,31.0,KartisAshS6,indicator,missing indicator
+mortgage_info_source_code_4,1.251173746170203,1.251173746170203,1.7842934914518662,20.0,MashkantaMekorot,indicator,one-hot mortgage information source
+KartisAshP4_idk,1.2110990983302075,-1.2110990983302075,0.6964896014987136,15.0,KartisAshP4,indicator,IDK indicator
+Halvaa4_yes,1.2063314745080542,1.2063314745080542,0.0879226961002842,4.0,Halvaa4,indicator,yes indicator
+NosCas1_knowledge_score_idk,1.1943963311094987,-1.1943963311094987,1.2247448713915892,18.0,NosCas1,indicator,IDK indicator for NosCas1
+population_group_code_1,1.1925256272222609,1.1925256272222609,11.710342578204198,30.0,Pop_Group,indicator,one-hot categorical encoding
+mortgage_info_source_idk,1.1806537882766066,1.1806537882766066,1.014694481966698,17.0,MashkantaMekorot,indicator,mortgage-source IDK indicator
+living_arrangement_code_3,1.1656767843631433,1.1656767843631433,1.47827747825402,19.0,HesderDiyur,indicator,one-hot categorical encoding
+Hashkaot4_missing,1.1642124634134645,-1.1642124634134645,0.0879226961002842,4.0,Hashkaot4,indicator,missing indicator
+mortgage_info_source_code_7,1.1582087739750677,1.1582087739750677,1.014694481966698,17.0,MashkantaMekorot,indicator,one-hot mortgage information source
+OverVaI3_yes,1.1366379350762381,-1.1366379350762381,0.22524369935324473,9.0,OverVaI3,semantic_score,binary yes/no score
+KartisAshP4_yes,1.1071519257091476,1.1071519257091476,0.22524369935324473,9.0,KartisAshP4,indicator,yes indicator
+KartisAshS6_idk,1.0974331166467695,1.0974331166467695,0.0879226961002842,4.0,KartisAshS6,indicator,IDK indicator
+KartisAshS4_missing,1.0948156525790986,-1.0948156525790986,1.7842934914518662,20.0,KartisAshS4,indicator,missing indicator
+OverVaI4_yes,1.0745460179720066,1.0745460179720066,0.8406688738069995,16.0,OverVaI4,semantic_score,binary yes/no score
+MekorotM3_code_1,1.0579529557691218,1.0579529557691218,0.05,1.0,MekorotM3,indicator,Q27 non-ordinal source-interest one-hot
+work_income_mid_code_98,1.0466604613216168,-1.0466604613216168,0.07284347675710216,3.0,HachnasaAvoda,indicator,special code 98 indicator for HachnasaAvoda
+OverVaEruim1_frequency_good_behavior_score,1.045792865077846,-1.045792865077846,0.05,1.0,OverVaEruim1,semantic_score,"frequency score: never is best, usual state is worst"
+saving_program_interest_score_missing,1.0450513820936091,-1.0450513820936091,0.18661318301485477,8.0,ShiurRibitBank,indicator,missing indicator for ShiurRibitBank
+HeshbonMaakav_code_5,0.9749026479644368,0.9749026479644368,0.1280918973960562,6.0,HeshbonMaakav,indicator,one-hot decision-maker category
+NoseCaspiM5_attitude_score_not_relevant,0.9507707073300097,0.9507707073300097,4.5710707766300676,25.0,NoseCaspiM5,indicator,not-relevant indicator for NoseCaspiM5
+mortgage_knowledge_score_missing,0.9460305791287296,0.9460305791287296,1.014694481966698,17.0,RamatYedaMash,indicator,missing indicator for RamatYedaMash
+KartisAshS2_missing,0.9459350745775326,-0.9388402817705424,3.787107341348293,24.0,KartisAshS2,indicator,missing indicator
+Bituhim2_code_3,0.9352535726886116,0.9352535726886116,0.1280918973960562,6.0,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need
+population_group_missing,0.9088508326776344,-0.9088508326776344,1.7842934914518662,20.0,Pop_Group,indicator,one-hot categorical encoding
+Hashkaot2_yes,0.9084589102122216,0.020384644927964088,1.014694481966698,17.0,Hashkaot2,indicator,yes indicator
+preferred_source_number_code_9,0.9016374934181005,-0.9016374934181005,0.6964896014987136,15.0,MakorMahooM,indicator,Q28 selected source number one-hot
+Bituhim2_idk_strong_signal,0.8600576359949799,0.8600576359949799,0.1061234421212497,5.0,Bituhim2,indicator,IDK is a strong insurance uncertainty signal
+NoseCaspiM8_attitude_score_not_relevant,0.838906505000706,-0.838906505000706,0.3960806665347824,12.0,NoseCaspiM8,indicator,not-relevant indicator for NoseCaspiM8
+Hashkaot9_idk,0.8373214763845079,0.8373214763845079,0.6964896014987136,15.0,Hashkaot9,indicator,IDK indicator
+KartisAshP4_no,0.8261189212993736,0.8261189212993736,1.2247448713915892,18.0,KartisAshP4,indicator,no indicator
+living_arrangement_code_5,0.8216495849306988,0.8216495849306988,0.05,1.0,HesderDiyur,indicator,one-hot categorical encoding
+NoseCaspiM8_attitude_score,0.8215266804538791,-0.8215266804538791,5.517321311923108,26.0,NoseCaspiM8,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero
+NoseCaspiM10_attitude_score_missing,0.8203412361115564,0.8203412361115564,1.014694481966698,17.0,NoseCaspiM10,indicator,missing indicator for NoseCaspiM10
+Hashkaot2_idk,0.8113738157975722,-0.8113738157975722,0.3960806665347824,12.0,Hashkaot2,indicator,IDK indicator
+preferred_source_number_code_6,0.7915240908580935,0.7915240908580935,0.5770378565332791,14.0,MakorMahooM,indicator,Q28 selected source number one-hot
+Bituhim6_code_1,0.7852281334160023,0.7852281334160023,0.8406688738069995,16.0,Bituhim6,indicator,one-hot insurance answer: yes/no/IDK/no need
+MekorotM2_idk,0.7835320425375437,-0.7835320425375437,1.014694481966698,17.0,MekorotM2,indicator,Q27 source-interest IDK indicator
+MekorotM2_code_3,0.7616894888732146,-0.7616894888732146,1.014694481966698,17.0,MekorotM2,indicator,Q27 non-ordinal source-interest one-hot
+mortgage_info_source_code_2,0.7494463795401464,0.7494463795401464,0.05,1.0,MashkantaMekorot,indicator,one-hot mortgage information source
+preferred_info_source_code_8,0.7354990700486629,-0.7354990700486629,0.0879226961002842,4.0,MakorMuadaf,indicator,Q28 preferred information source one-hot
+family_status_code_2,0.7280246782188313,0.7280246782188313,0.05,1.0,MatzavMishp,indicator,one-hot categorical encoding
+KartisAshP1_yes,0.7061348666865734,0.7061348666865734,0.05,1.0,KartisAshP1,indicator,yes indicator
+MekorotM5_code_2,0.702213844354004,-0.702213844354004,0.05,1.0,MekorotM5,indicator,Q27 non-ordinal source-interest one-hot
+Mashkanta1_missing,0.6813484663751465,-0.6813484663751465,0.3281506835704358,11.0,Mashkanta1,indicator,missing indicator for Mashkanta1
+HipusM1_info_search_score,0.6508812801537461,-0.6508812801537461,1.014694481966698,17.0,HipusM1,semantic_score,Q24 information-search frequency score: higher is better
+Hashkaot4_yes,0.6107209713382185,0.5395390767678908,6.659453757450426,27.0,Hashkaot4,indicator,yes indicator
+KartisAshP1_missing,0.5916574432511759,-0.07019682958935573,0.47807273382980475,13.0,KartisAshP1,indicator,missing indicator
+MekorotM8_code_2,0.586344160937826,-0.586344160937826,0.060350425332843426,2.0,MekorotM8,indicator,Q27 non-ordinal source-interest one-hot
+OverVaI4_missing,0.5861431656619969,0.5861431656619969,4.5710707766300676,25.0,OverVaI4,indicator,missing indicator for OverVaI4
+religion_language_code_2,0.5742892800679769,-0.5742892800679769,0.0879226961002842,4.0,DatSafa_C,indicator,one-hot categorical encoding
+religion_language_code_3,0.5650942803190789,0.0,0.05,1.0,DatSafa_C,indicator,one-hot categorical encoding
+NoseCaspiM1_attitude_score_not_relevant,0.5503379144499687,0.5503379144499687,0.5770378565332791,14.0,NoseCaspiM1,indicator,not-relevant indicator for NoseCaspiM1
+NoseCaspiM7_attitude_score,0.548407499164605,-0.548407499164605,0.15460800979085865,7.0,NoseCaspiM7,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero
+preferred_source_number_code_7,0.5278752335430928,0.5278752335430928,0.1061234421212497,5.0,MakorMahooM,indicator,Q28 selected source number one-hot
+Hashkaot7_yes,0.5249546276702376,0.5249546276702376,0.18661318301485477,8.0,Hashkaot7,indicator,yes indicator
+Bituhim2_missing,0.5136180534266651,-0.5136180534266651,0.47807273382980475,13.0,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need
+preferred_source_number_code_5,0.5000962630685438,0.5000962630685438,0.060350425332843426,2.0,MakorMahooM,indicator,Q28 selected source number one-hot
+living_arrangement_code_4,0.49848790629956596,-0.49848790629956596,0.05,1.0,HesderDiyur,indicator,one-hot categorical encoding
+Hashkaot1_missing,0.4963910812939457,-0.4963910812939457,17.06044134826242,32.0,Hashkaot1,indicator,missing indicator
+Hashkaot1_no,0.45390731869661827,0.0,0.1280918973960562,6.0,Hashkaot1,indicator,no indicator
+HeshbonMaakav_code_7,0.44795480159345497,0.44795480159345497,1.014694481966698,17.0,HeshbonMaakav,indicator,one-hot decision-maker category
+Bituhim3_code_2,0.4431102930402641,0.0,0.05,1.0,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need
+KartisAshS4_no,0.4008888981249361,0.4008888981249361,0.3281506835704358,11.0,KartisAshS4,indicator,no indicator
+KartisAshS1_no,0.3946612931007121,-0.3143782150449812,1.2247448713915892,18.0,KartisAshS1,indicator,no indicator
+Hashkaot2_missing,0.388190677682371,0.0,0.3281506835704358,11.0,Hashkaot2,indicator,missing indicator
+KartisAshS3_missing,0.386501147222974,0.0,0.6964896014987136,15.0,KartisAshS3,indicator,missing indicator
+KartisAshNechsam_no,0.372502638514438,0.0,0.05,1.0,KartisAshNechsam,indicator,no indicator
+HipusM5_info_search_score_missing,0.35856502486522646,0.0,1.7842934914518662,20.0,HipusM5,indicator,missing indicator for HipusM5
+OverVaI6_missing,0.3474230058543054,-0.21353987492223836,0.05,1.0,OverVaI6,indicator,missing indicator for OverVaI6
+Bituhim2_code_1,0.3374062800609327,0.0,2.153657422554886,21.0,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need
+profession_code_6,0.33726719044737563,0.2636585666419387,0.3281506835704358,11.0,SemelMishlach_wp,indicator,one-hot categorical encoding
+Halvaa5_no,0.33693538976826365,0.0,9.701955299916742,29.0,Halvaa5,indicator,no indicator
+SherutY5_no,0.3328124889301025,0.3328124889301025,2.599482829448454,22.0,SherutY5,indicator,no indicator
+NoseCaspiM4_attitude_score,0.3178044987573644,0.3178044987573644,0.5770378565332791,14.0,NoseCaspiM4,semantic_score,Q25 negative statement score: strongly disagree highest; not relevant zero
+profession_code_3,0.3002413730749862,0.0,0.05,1.0,SemelMishlach_wp,indicator,one-hot categorical encoding
+SherutY6_yes,0.2961282911429661,0.2961282911429661,0.3960806665347824,12.0,SherutY6,indicator,yes indicator
+HipusM4_info_search_score_missing,0.28993701549812695,0.0,1.2247448713915892,18.0,HipusM4,indicator,missing indicator for HipusM4
+Bituhim1_code_2,0.2898847348657758,-0.2898847348657758,0.3281506835704358,11.0,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need
+Hashkaot4_no,0.2839440845381285,0.0,0.3960806665347824,12.0,Hashkaot4,indicator,no indicator
+NoseCaspiM3_attitude_score_missing,0.27540474057547837,0.0,0.47807273382980475,13.0,NoseCaspiM3,indicator,missing indicator for NoseCaspiM3
+MekorotM8_code_3,0.26355675421281466,0.0,0.3281506835704358,11.0,MekorotM8,indicator,Q27 non-ordinal source-interest one-hot
+district_code_1,0.2619014306799792,0.0,0.1280918973960562,6.0,Machoz,indicator,one-hot categorical encoding
+MekorotM8_idk,0.2417208629649978,0.0,0.3281506835704358,11.0,MekorotM8,indicator,Q27 source-interest IDK indicator
+NosCas4_knowledge_score,0.23526142109345666,0.0,0.0879226961002842,4.0,NosCas4,semantic_score,"financial knowledge score: yes correct, IDK middle, no lowest"
+KartisAshS2_yes,0.22395918320840333,0.0,0.05,1.0,KartisAshS2,indicator,yes indicator
+OverVaAcher_no,0.2228370218564991,0.0,0.0879226961002842,4.0,OverVaAcher,indicator,no indicator
+HeshbonMaakav_idk,0.21806412061217076,0.0,3.787107341348293,24.0,HeshbonMaakav,indicator,decision-maker IDK indicator
+Hashkaot5_yes,0.2133486074151403,0.15512580218769897,0.5770378565332791,14.0,Hashkaot5,indicator,yes indicator
+HipusM8_info_search_score,0.21121820900239952,0.15621645132834458,0.07284347675710216,3.0,HipusM8,semantic_score,Q24 information-search frequency score: higher is better
+KartisAshS6_no,0.2059350630018598,0.0,0.5770378565332791,14.0,KartisAshS6,indicator,no indicator
+KartisAshS5_idk,0.20435925832981156,-0.20435925832981156,4.5710707766300676,25.0,KartisAshS5,indicator,IDK indicator
+HeshbonMaakav_code_8,0.20055691490304386,0.08261702539983047,3.787107341348293,24.0,HeshbonMaakav,indicator,one-hot decision-maker category
+preferred_source_number_code_8,0.19815980922547674,0.19815980922547674,0.07284347675710216,3.0,MakorMahooM,indicator,Q28 selected source number one-hot
+household_income_mid_code_99,0.19348734365974138,0.0,0.15460800979085865,7.0,HachnasaKolelet,indicator,special code 99 indicator for HachnasaKolelet
+MekorotM7_idk,0.18974570565176105,0.0,0.060350425332843426,2.0,MekorotM7,indicator,Q27 source-interest IDK indicator
+Halvaa2_no,0.18695267998998816,0.0,0.05,1.0,Halvaa2,indicator,no indicator
+Halvaa8_yes,0.16050361431473156,0.0,0.05,1.0,Halvaa8,indicator,yes indicator
+KartisAshP2_no,0.15876217880031082,0.0,0.05,1.0,KartisAshP2,indicator,no indicator
+KartisAshS4_yes,0.15687196403251213,0.0,0.1061234421212497,5.0,KartisAshS4,indicator,yes indicator
+MekorotM7_code_3,0.14589674700501923,0.0,0.060350425332843426,2.0,MekorotM7,indicator,Q27 non-ordinal source-interest one-hot
+q20_knowledge_mean,0.14309164835852306,0.0,20.592097834673318,33.0,"NosCas1_knowledge_score,NosCas2_knowledge_score,NosCas3_knowledge_score,NosCas4_knowledge_score",aggregate_score,row-wise mean of related semantic scores
+KartisAshNechsam_idk,0.13522265220462945,0.0,0.1280918973960562,6.0,KartisAshNechsam,indicator,IDK indicator
+HipusM2_info_search_score_missing,0.12969754261126537,0.0,0.47807273382980475,13.0,HipusM2,indicator,missing indicator for HipusM2
+MekorotM1_code_1,0.12959307950219218,0.0,0.15460800979085865,7.0,MekorotM1,indicator,Q27 non-ordinal source-interest one-hot
+MekorotM3_code_2,0.1079693806980317,-0.10403403582212026,0.05,1.0,MekorotM3,indicator,Q27 non-ordinal source-interest one-hot
+Bituhim3_idk_strong_signal,0.09148708447971461,0.0,14.13448310775858,31.0,Bituhim3,indicator,IDK is a strong insurance uncertainty signal
+MekorotM9_code_3,0.08695669692028549,0.0,0.18661318301485477,8.0,MekorotM9,indicator,Q27 non-ordinal source-interest one-hot
+profession_code_4,0.08487969351074856,-0.01916583754597395,14.13448310775858,31.0,SemelMishlach_wp,indicator,one-hot categorical encoding
+MekorotM5_code_1,0.08065251948021794,0.017432935586229287,0.05,1.0,MekorotM5,indicator,Q27 non-ordinal source-interest one-hot
+MekorotM9_idk,0.0788557989648324,0.0,0.18661318301485477,8.0,MekorotM9,indicator,Q27 source-interest IDK indicator
+MekorotM5_code_3,0.07857347569701584,0.0,0.3960806665347824,12.0,MekorotM5,indicator,Q27 non-ordinal source-interest one-hot
+HashkaotMaclit_code_4,0.07133977570884284,0.0,0.22524369935324473,9.0,HashkaotMaclit,indicator,one-hot decision-maker category
+NoseCaspiM1_attitude_score_missing,0.07096189871129387,0.0,0.15460800979085865,7.0,NoseCaspiM1,indicator,missing indicator for NoseCaspiM1
+Hashkaot6_yes,0.07006094604687124,0.0,0.15460800979085865,7.0,Hashkaot6,indicator,yes indicator
+SherutY5_yes,0.06982632641460888,0.0,0.18661318301485477,8.0,SherutY5,indicator,yes indicator
+Bituhim5_idk_strong_signal,0.0695990386023084,0.0,0.1061234421212497,5.0,Bituhim5,indicator,IDK is a strong insurance uncertainty signal
+MekorotM5_idk,0.06499475056102574,0.0,0.3960806665347824,12.0,MekorotM5,indicator,Q27 source-interest IDK indicator
+Halvaa2_idk,0.058265353755509945,0.0,0.15460800979085865,7.0,Halvaa2,indicator,IDK indicator
+Bituhim5_code_3,0.057821255462196144,0.0,0.1061234421212497,5.0,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need
+Halvaa5_yes,0.05770764043340795,0.0,1.47827747825402,19.0,Halvaa5,indicator,yes indicator
+preferred_info_source_code_1,0.054089619175926015,0.0,0.3960806665347824,12.0,MakorMuadaf,indicator,Q28 preferred information source one-hot
+SherutY4_no,0.05056751942264865,0.0,0.060350425332843426,2.0,SherutY4,indicator,no indicator
+MekorotM8_code_1,0.04576413611274754,0.0,0.6964896014987136,15.0,MekorotM8,indicator,Q27 non-ordinal source-interest one-hot
+education_years_mid_missing,0.04515015512133987,0.0,0.1280918973960562,6.0,ShnotLimudKlali_C,indicator,missing indicator for ShnotLimudKlali_C
+family_status_code_1,0.044820559167284404,0.0,0.05,1.0,MatzavMishp,indicator,one-hot categorical encoding
+Halvaa7_yes,0.044142992130036425,0.0,0.22524369935324473,9.0,Halvaa7,indicator,yes indicator
+district_missing,0.03876233933252811,0.0,0.2718710611902285,10.0,Machoz,indicator,one-hot categorical encoding
+district_code_4,0.034148455789254496,0.034148455789254496,0.0879226961002842,4.0,Machoz,indicator,one-hot categorical encoding
+Halvaa6_yes,0.028814573921880273,0.0,0.1061234421212497,5.0,Halvaa6,indicator,yes indicator
+KartisAshP1_no,0.025465427183328823,0.0,0.05,1.0,KartisAshP1,indicator,no indicator
+Hashkaot9_no,0.02291016271581322,0.0,0.47807273382980475,13.0,Hashkaot9,indicator,no indicator
+population_group_code_2,0.022480267772686194,0.0,3.1375978880527504,23.0,Pop_Group,indicator,one-hot categorical encoding
+Bituhim3_code_3,0.008322781082877956,0.0,14.13448310775858,31.0,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need
+has_loan_missing,0.005547411051082634,0.0,6.659453757450426,27.0,Halvaa,indicator,missing indicator for Halvaa
+KartisAshP3_yes,0.00523110133770636,0.0,0.3960806665347824,12.0,KartisAshP3,indicator,yes indicator

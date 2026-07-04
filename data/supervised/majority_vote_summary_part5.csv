@@ -1,0 +1,5 @@
+learner,train_f1,test_f1,combination,beats_best_base_test_f1
+logistic_l2,0.61875,0.6233766233766234,base,False
+knn,0.5878962536023055,0.5730994152046783,base,False
+kernel_logistic_rbf,0.610062893081761,0.6225165562913907,base,False
+majority_vote,0.6191950464396285,0.618421052631579,majority_vote,False

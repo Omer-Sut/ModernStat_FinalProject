@@ -1,0 +1,16 @@
+feature_name,entry_step,entry_lambda,max_abs_standardized_coef,final_standardized_coef,source_columns,feature_type,transformation,notes
+KartisAshNechsam_no,2,0.0962467254448218,0.2222575839992299,-0.038109250128137,KartisAshNechsam,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+OverVaEruim2_frequency_good_behavior_score,2,0.0962467254448218,0.2132378202922076,-0.2132378202922076,OverVaEruim2,semantic_score,"frequency score: never is best, usual state is worst",
+NoseCaspiM3_attitude_score,3,0.0836769731901246,1.0154593827321656,-1.0154593827321656,NoseCaspiM3,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero,
+OverVaEruim3_frequency_good_behavior_score,3,0.0836769731901246,0.2345236679080808,-0.2345236679080808,OverVaEruim3,semantic_score,"frequency score: never is best, usual state is worst",
+Halvaa8_yes,4,0.0727488214263973,0.1840165609440188,0.1840165609440188,Halvaa8,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+NoseCaspiM2_attitude_score,5,0.0632478783249589,0.3433338901124558,-0.3433338901124558,NoseCaspiM2,semantic_score,Q25 negative statement score: strongly disagree highest; not relevant zero,
+OverVaEruim1_frequency_good_behavior_score,5,0.0632478783249589,0.1497236862948294,-0.1134944270574814,OverVaEruim1,semantic_score,"frequency score: never is best, usual state is worst",
+has_loan_yes,6,0.0549877514738304,0.3524584368947517,-0.3524584368947517,Halvaa,semantic_score,binary yes/no score,"1=yes, 2=no"
+KartisAshP1_no,6,0.0549877514738304,0.1375637186576624,-0.0812662291083759,KartisAshP1,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+household_income_mid,7,0.0478063911743035,0.071431464510556,-0.071431464510556,HachnasaKolelet,numeric,mapped binned numeric value,open-ended bins use extrapolated midpoint
+NoseCaspiM3_attitude_score_not_relevant,8,0.041562911300314,0.7814910607665551,-0.7814910607665551,NoseCaspiM3,indicator,not-relevant indicator for NoseCaspiM3,
+mortgage_knowledge_score,8,0.041562911300314,0.4437978639049008,-0.4437978639049008,RamatYedaMash,semantic_score,"Q29 mortgage knowledge score: 1 highest, 5 lowest",
+Bituhim3_code_2,8,0.041562911300314,0.3543660962320965,0.3543660962320965,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need,
+MekorotM3_code_2,8,0.041562911300314,0.2178395960443702,-0.1416960160613835,MekorotM3,indicator,Q27 non-ordinal source-interest one-hot,
+HeshbonMaakav_code_3,8,0.041562911300314,0.1766931243681131,-0.1766931243681131,HeshbonMaakav,indicator,one-hot decision-maker category,

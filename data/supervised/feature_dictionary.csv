@@ -1,0 +1,445 @@
+feature_name,source_columns,feature_type,transformation,notes
+district_code_1,Machoz,indicator,one-hot categorical encoding,
+district_code_2,Machoz,indicator,one-hot categorical encoding,
+district_code_3,Machoz,indicator,one-hot categorical encoding,
+district_code_4,Machoz,indicator,one-hot categorical encoding,
+district_code_5,Machoz,indicator,one-hot categorical encoding,
+district_code_6,Machoz,indicator,one-hot categorical encoding,
+district_code_7,Machoz,indicator,one-hot categorical encoding,
+district_missing,Machoz,indicator,one-hot categorical encoding,
+household_size_mid,Ms_Nefashot,numeric,mapped binned numeric value,open-ended bins use extrapolated midpoint
+household_size_mid_missing,Ms_Nefashot,indicator,missing indicator for Ms_Nefashot,
+household_size_mid_top_bin,Ms_Nefashot,indicator,top/open bin indicator for Ms_Nefashot,
+gender_code_1,Minn,indicator,one-hot categorical encoding,
+gender_code_2,Minn,indicator,one-hot categorical encoding,
+age_mid,Gil,numeric,mapped binned numeric value,open-ended bins use extrapolated midpoint
+age_mid_missing,Gil,indicator,missing indicator for Gil,
+age_mid_top_bin,Gil,indicator,top/open bin indicator for Gil,
+family_status_code_1,MatzavMishp,indicator,one-hot categorical encoding,
+family_status_code_2,MatzavMishp,indicator,one-hot categorical encoding,
+family_status_code_3,MatzavMishp,indicator,one-hot categorical encoding,
+family_status_code_4,MatzavMishp,indicator,one-hot categorical encoding,
+family_status_code_5,MatzavMishp,indicator,one-hot categorical encoding,
+population_group_code_1,Pop_Group,indicator,one-hot categorical encoding,
+population_group_code_2,Pop_Group,indicator,one-hot categorical encoding,
+population_group_missing,Pop_Group,indicator,one-hot categorical encoding,
+religion_language_code_1,DatSafa_C,indicator,one-hot categorical encoding,
+religion_language_code_2,DatSafa_C,indicator,one-hot categorical encoding,
+religion_language_code_3,DatSafa_C,indicator,one-hot categorical encoding,
+living_arrangement_code_1,HesderDiyur,indicator,one-hot categorical encoding,
+living_arrangement_code_2,HesderDiyur,indicator,one-hot categorical encoding,
+living_arrangement_code_3,HesderDiyur,indicator,one-hot categorical encoding,
+living_arrangement_code_4,HesderDiyur,indicator,one-hot categorical encoding,
+living_arrangement_code_5,HesderDiyur,indicator,one-hot categorical encoding,
+education_years_mid,ShnotLimudKlali_C,numeric,mapped binned numeric value,open-ended bins use extrapolated midpoint
+education_years_mid_missing,ShnotLimudKlali_C,indicator,missing indicator for ShnotLimudKlali_C,
+education_years_mid_top_bin,ShnotLimudKlali_C,indicator,top/open bin indicator for ShnotLimudKlali_C,
+employment_status_code_1,MatzavTaasuka_C,indicator,one-hot categorical encoding,
+employment_status_code_2,MatzavTaasuka_C,indicator,one-hot categorical encoding,
+employment_status_code_3,MatzavTaasuka_C,indicator,one-hot categorical encoding,
+household_income_mid,HachnasaKolelet,numeric,mapped binned numeric value,open-ended bins use extrapolated midpoint
+household_income_mid_missing,HachnasaKolelet,indicator,missing indicator for HachnasaKolelet,
+household_income_mid_top_bin,HachnasaKolelet,indicator,top/open bin indicator for HachnasaKolelet,
+household_income_mid_code_98,HachnasaKolelet,indicator,special code 98 indicator for HachnasaKolelet,
+household_income_mid_code_99,HachnasaKolelet,indicator,special code 99 indicator for HachnasaKolelet,
+work_income_mid,HachnasaAvoda,numeric,mapped binned numeric value,open-ended bins use extrapolated midpoint
+work_income_mid_missing,HachnasaAvoda,indicator,missing indicator for HachnasaAvoda,
+work_income_mid_top_bin,HachnasaAvoda,indicator,top/open bin indicator for HachnasaAvoda,
+work_income_mid_code_98,HachnasaAvoda,indicator,special code 98 indicator for HachnasaAvoda,
+work_income_mid_code_99,HachnasaAvoda,indicator,special code 99 indicator for HachnasaAvoda,
+profession_code_0,SemelMishlach_wp,indicator,one-hot categorical encoding,
+profession_code_1,SemelMishlach_wp,indicator,one-hot categorical encoding,
+profession_code_10,SemelMishlach_wp,indicator,one-hot categorical encoding,
+profession_code_2,SemelMishlach_wp,indicator,one-hot categorical encoding,
+profession_code_3,SemelMishlach_wp,indicator,one-hot categorical encoding,
+profession_code_4,SemelMishlach_wp,indicator,one-hot categorical encoding,
+profession_code_5,SemelMishlach_wp,indicator,one-hot categorical encoding,
+profession_code_6,SemelMishlach_wp,indicator,one-hot categorical encoding,
+profession_code_9,SemelMishlach_wp,indicator,one-hot categorical encoding,
+OverVashav_yes,OverVashav,semantic_score,binary yes/no score,"1=yes, 2=no"
+OverVashav_missing,OverVashav,indicator,missing indicator for OverVashav,
+OverVaI1_yes,OverVaI1,semantic_score,binary yes/no score,"1=yes, 2=no"
+OverVaI1_missing,OverVaI1,indicator,missing indicator for OverVaI1,
+OverVaI2_yes,OverVaI2,semantic_score,binary yes/no score,"1=yes, 2=no"
+OverVaI2_missing,OverVaI2,indicator,missing indicator for OverVaI2,
+OverVaI3_yes,OverVaI3,semantic_score,binary yes/no score,"1=yes, 2=no"
+OverVaI3_missing,OverVaI3,indicator,missing indicator for OverVaI3,
+OverVaI4_yes,OverVaI4,semantic_score,binary yes/no score,"1=yes, 2=no"
+OverVaI4_missing,OverVaI4,indicator,missing indicator for OverVaI4,
+OverVaI5_yes,OverVaI5,semantic_score,binary yes/no score,"1=yes, 2=no"
+OverVaI5_missing,OverVaI5,indicator,missing indicator for OverVaI5,
+OverVaI6_yes,OverVaI6,semantic_score,binary yes/no score,"1=yes, 2=no"
+OverVaI6_missing,OverVaI6,indicator,missing indicator for OverVaI6,
+Mashkanta1_yes,Mashkanta1,semantic_score,binary yes/no score,"1=yes, 2=no"
+Mashkanta1_missing,Mashkanta1,indicator,missing indicator for Mashkanta1,
+NoseCaspiHarhavaNihul_yes,NoseCaspiHarhavaNihul,semantic_score,binary yes/no score,"1=yes, 2=no"
+NoseCaspiHarhavaNihul_missing,NoseCaspiHarhavaNihul,indicator,missing indicator for NoseCaspiHarhavaNihul,
+NoseCaspiHarhavaCarhanut_yes,NoseCaspiHarhavaCarhanut,semantic_score,binary yes/no score,"1=yes, 2=no"
+NoseCaspiHarhavaCarhanut_missing,NoseCaspiHarhavaCarhanut,indicator,missing indicator for NoseCaspiHarhavaCarhanut,
+NoseCaspiHarhavaHalvaot_yes,NoseCaspiHarhavaHalvaot,semantic_score,binary yes/no score,"1=yes, 2=no"
+NoseCaspiHarhavaHalvaot_missing,NoseCaspiHarhavaHalvaot,indicator,missing indicator for NoseCaspiHarhavaHalvaot,
+NoseCaspiHarhavaHishonot_yes,NoseCaspiHarhavaHishonot,semantic_score,binary yes/no score,"1=yes, 2=no"
+NoseCaspiHarhavaHishonot_missing,NoseCaspiHarhavaHishonot,indicator,missing indicator for NoseCaspiHarhavaHishonot,
+NoseCaspiHarhavaBituhim_yes,NoseCaspiHarhavaBituhim,semantic_score,binary yes/no score,"1=yes, 2=no"
+NoseCaspiHarhavaBituhim_missing,NoseCaspiHarhavaBituhim,indicator,missing indicator for NoseCaspiHarhavaBituhim,
+NoseCaspiHarhavaMashkanta_yes,NoseCaspiHarhavaMashkanta,semantic_score,binary yes/no score,"1=yes, 2=no"
+NoseCaspiHarhavaMashkanta_missing,NoseCaspiHarhavaMashkanta,indicator,missing indicator for NoseCaspiHarhavaMashkanta,
+NoseCaspiHarhavaEynCoreh_yes,NoseCaspiHarhavaEynCoreh,semantic_score,binary yes/no score,"1=yes, 2=no"
+NoseCaspiHarhavaEynCoreh_missing,NoseCaspiHarhavaEynCoreh,indicator,missing indicator for NoseCaspiHarhavaEynCoreh,
+bank_balance_tracking_score,OverVaMaakav,semantic_score,"ordinal score: weekly+ tracking highest, no tracking lowest",
+bank_balance_tracking_score_missing,OverVaMaakav,indicator,missing indicator for OverVaMaakav,
+OverVaAcher_yes,OverVaAcher,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+OverVaAcher_no,OverVaAcher,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+OverVaAcher_idk,OverVaAcher,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+OverVaAcher_missing,OverVaAcher,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP1_yes,KartisAshP1,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP1_no,KartisAshP1,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP1_idk,KartisAshP1,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP1_missing,KartisAshP1,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP2_yes,KartisAshP2,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP2_no,KartisAshP2,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP2_idk,KartisAshP2,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP2_missing,KartisAshP2,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP3_yes,KartisAshP3,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP3_no,KartisAshP3,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP3_idk,KartisAshP3,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP3_missing,KartisAshP3,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP4_yes,KartisAshP4,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP4_no,KartisAshP4,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP4_idk,KartisAshP4,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshP4_missing,KartisAshP4,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS1_yes,KartisAshS1,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS1_no,KartisAshS1,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS1_idk,KartisAshS1,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS1_missing,KartisAshS1,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS2_yes,KartisAshS2,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS2_no,KartisAshS2,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS2_idk,KartisAshS2,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS2_missing,KartisAshS2,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS3_yes,KartisAshS3,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS3_no,KartisAshS3,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS3_idk,KartisAshS3,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS3_missing,KartisAshS3,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS4_yes,KartisAshS4,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS4_no,KartisAshS4,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS4_idk,KartisAshS4,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS4_missing,KartisAshS4,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS5_yes,KartisAshS5,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS5_no,KartisAshS5,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS5_idk,KartisAshS5,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS5_missing,KartisAshS5,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS6_yes,KartisAshS6,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS6_no,KartisAshS6,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS6_idk,KartisAshS6,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS6_missing,KartisAshS6,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS7_yes,KartisAshS7,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS7_no,KartisAshS7,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS7_idk,KartisAshS7,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshS7_missing,KartisAshS7,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+KartisAshNechsam_yes,KartisAshNechsam,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+KartisAshNechsam_no,KartisAshNechsam,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+KartisAshNechsam_idk,KartisAshNechsam,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+KartisAshNechsam_missing,KartisAshNechsam,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Halvaa2_yes,Halvaa2,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Halvaa2_no,Halvaa2,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Halvaa2_idk,Halvaa2,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Halvaa2_missing,Halvaa2,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Halvaa3_yes,Halvaa3,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Halvaa3_no,Halvaa3,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Halvaa3_idk,Halvaa3,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Halvaa3_missing,Halvaa3,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Halvaa4_yes,Halvaa4,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Halvaa4_no,Halvaa4,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Halvaa4_idk,Halvaa4,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Halvaa4_missing,Halvaa4,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Halvaa5_yes,Halvaa5,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Halvaa5_no,Halvaa5,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Halvaa5_idk,Halvaa5,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Halvaa5_missing,Halvaa5,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Halvaa6_yes,Halvaa6,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Halvaa6_no,Halvaa6,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Halvaa6_idk,Halvaa6,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Halvaa6_missing,Halvaa6,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Halvaa7_yes,Halvaa7,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Halvaa7_no,Halvaa7,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Halvaa7_idk,Halvaa7,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Halvaa7_missing,Halvaa7,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Halvaa8_yes,Halvaa8,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Halvaa8_no,Halvaa8,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Halvaa8_idk,Halvaa8,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Halvaa8_missing,Halvaa8,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Halvaa9_yes,Halvaa9,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Halvaa9_no,Halvaa9,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Halvaa9_idk,Halvaa9,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Halvaa9_missing,Halvaa9,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot1_yes,Hashkaot1,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot1_no,Hashkaot1,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot1_idk,Hashkaot1,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot1_missing,Hashkaot1,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot2_yes,Hashkaot2,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot2_no,Hashkaot2,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot2_idk,Hashkaot2,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot2_missing,Hashkaot2,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot3_yes,Hashkaot3,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot3_no,Hashkaot3,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot3_idk,Hashkaot3,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot3_missing,Hashkaot3,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot4_yes,Hashkaot4,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot4_no,Hashkaot4,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot4_idk,Hashkaot4,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot4_missing,Hashkaot4,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot5_yes,Hashkaot5,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot5_no,Hashkaot5,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot5_idk,Hashkaot5,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot5_missing,Hashkaot5,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot6_yes,Hashkaot6,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot6_no,Hashkaot6,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot6_idk,Hashkaot6,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot6_missing,Hashkaot6,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot7_yes,Hashkaot7,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot7_no,Hashkaot7,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot7_idk,Hashkaot7,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot7_missing,Hashkaot7,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot8_yes,Hashkaot8,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot8_no,Hashkaot8,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot8_idk,Hashkaot8,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot8_missing,Hashkaot8,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot9_yes,Hashkaot9,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot9_no,Hashkaot9,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot9_idk,Hashkaot9,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+Hashkaot9_missing,Hashkaot9,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+SherutY1_yes,SherutY1,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+SherutY1_no,SherutY1,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+SherutY1_idk,SherutY1,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+SherutY1_missing,SherutY1,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+SherutY2_yes,SherutY2,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+SherutY2_no,SherutY2,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+SherutY2_idk,SherutY2,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+SherutY2_missing,SherutY2,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+SherutY3_yes,SherutY3,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+SherutY3_no,SherutY3,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+SherutY3_idk,SherutY3,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+SherutY3_missing,SherutY3,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+SherutY4_yes,SherutY4,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+SherutY4_no,SherutY4,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+SherutY4_idk,SherutY4,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+SherutY4_missing,SherutY4,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+SherutY5_yes,SherutY5,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+SherutY5_no,SherutY5,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+SherutY5_idk,SherutY5,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+SherutY5_missing,SherutY5,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+SherutY6_yes,SherutY6,indicator,yes indicator,"1=yes, 2=no, 3=IDK"
+SherutY6_no,SherutY6,indicator,no indicator,"1=yes, 2=no, 3=IDK"
+SherutY6_idk,SherutY6,indicator,IDK indicator,"1=yes, 2=no, 3=IDK"
+SherutY6_missing,SherutY6,indicator,missing indicator,"1=yes, 2=no, 3=IDK"
+OverVaEruim1_frequency_good_behavior_score,OverVaEruim1,semantic_score,"frequency score: never is best, usual state is worst",
+OverVaEruim1_frequency_good_behavior_score_missing,OverVaEruim1,indicator,missing indicator for OverVaEruim1,
+OverVaEruim2_frequency_good_behavior_score,OverVaEruim2,semantic_score,"frequency score: never is best, usual state is worst",
+OverVaEruim2_frequency_good_behavior_score_missing,OverVaEruim2,indicator,missing indicator for OverVaEruim2,
+OverVaEruim3_frequency_good_behavior_score,OverVaEruim3,semantic_score,"frequency score: never is best, usual state is worst",
+OverVaEruim3_frequency_good_behavior_score_missing,OverVaEruim3,indicator,missing indicator for OverVaEruim3,
+HeshbonMaakav_code_1,HeshbonMaakav,indicator,one-hot decision-maker category,
+HeshbonMaakav_code_2,HeshbonMaakav,indicator,one-hot decision-maker category,
+HeshbonMaakav_code_3,HeshbonMaakav,indicator,one-hot decision-maker category,
+HeshbonMaakav_code_4,HeshbonMaakav,indicator,one-hot decision-maker category,
+HeshbonMaakav_code_5,HeshbonMaakav,indicator,one-hot decision-maker category,
+HeshbonMaakav_code_6,HeshbonMaakav,indicator,one-hot decision-maker category,
+HeshbonMaakav_code_7,HeshbonMaakav,indicator,one-hot decision-maker category,
+HeshbonMaakav_code_8,HeshbonMaakav,indicator,one-hot decision-maker category,
+HeshbonMaakav_missing,HeshbonMaakav,indicator,one-hot decision-maker category,
+HeshbonMaakav_idk,HeshbonMaakav,indicator,decision-maker IDK indicator,
+HashkaotMaclit_code_1,HashkaotMaclit,indicator,one-hot decision-maker category,
+HashkaotMaclit_code_2,HashkaotMaclit,indicator,one-hot decision-maker category,
+HashkaotMaclit_code_3,HashkaotMaclit,indicator,one-hot decision-maker category,
+HashkaotMaclit_code_4,HashkaotMaclit,indicator,one-hot decision-maker category,
+HashkaotMaclit_code_5,HashkaotMaclit,indicator,one-hot decision-maker category,
+HashkaotMaclit_code_6,HashkaotMaclit,indicator,one-hot decision-maker category,
+HashkaotMaclit_code_7,HashkaotMaclit,indicator,one-hot decision-maker category,
+HashkaotMaclit_code_8,HashkaotMaclit,indicator,one-hot decision-maker category,
+HashkaotMaclit_missing,HashkaotMaclit,indicator,one-hot decision-maker category,
+HashkaotMaclit_idk,HashkaotMaclit,indicator,decision-maker IDK indicator,
+credit_cards_count,KartisAshKama,numeric,credit-card count from coded answers,open-ended bins use extrapolated midpoint
+credit_cards_count_missing,KartisAshKama,indicator,missing indicator for KartisAshKama,
+credit_cards_count_top_bin,KartisAshKama,indicator,top/open bin indicator for KartisAshKama,
+mortgage_info_source_code_1,MashkantaMekorot,indicator,one-hot mortgage information source,
+mortgage_info_source_code_2,MashkantaMekorot,indicator,one-hot mortgage information source,
+mortgage_info_source_code_3,MashkantaMekorot,indicator,one-hot mortgage information source,
+mortgage_info_source_code_4,MashkantaMekorot,indicator,one-hot mortgage information source,
+mortgage_info_source_code_5,MashkantaMekorot,indicator,one-hot mortgage information source,
+mortgage_info_source_code_6,MashkantaMekorot,indicator,one-hot mortgage information source,
+mortgage_info_source_code_7,MashkantaMekorot,indicator,one-hot mortgage information source,
+mortgage_info_source_missing,MashkantaMekorot,indicator,one-hot mortgage information source,
+mortgage_info_source_idk,MashkantaMekorot,indicator,mortgage-source IDK indicator,
+mortgage_info_source_not_app_no_mortgage,"Mashkanta1,MashkantaMekorot",indicator,"structural missingness: no mortgage, so source not applicable",
+has_loan_yes,Halvaa,semantic_score,binary yes/no score,"1=yes, 2=no"
+has_loan_missing,Halvaa,indicator,missing indicator for Halvaa,
+Bituhim1_code_1,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim1_code_2,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim1_code_3,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim1_code_4,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim1_missing,Bituhim1,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim1_idk_strong_signal,Bituhim1,indicator,IDK is a strong insurance uncertainty signal,
+Bituhim2_code_1,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim2_code_2,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim2_code_3,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim2_code_4,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim2_missing,Bituhim2,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim2_idk_strong_signal,Bituhim2,indicator,IDK is a strong insurance uncertainty signal,
+Bituhim3_code_1,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim3_code_2,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim3_code_3,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim3_code_4,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim3_missing,Bituhim3,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim3_idk_strong_signal,Bituhim3,indicator,IDK is a strong insurance uncertainty signal,
+Bituhim4_code_1,Bituhim4,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim4_code_2,Bituhim4,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim4_code_3,Bituhim4,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim4_missing,Bituhim4,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim4_idk_strong_signal,Bituhim4,indicator,IDK is a strong insurance uncertainty signal,
+Bituhim5_code_1,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim5_code_2,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim5_code_3,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim5_code_4,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim5_missing,Bituhim5,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim5_idk_strong_signal,Bituhim5,indicator,IDK is a strong insurance uncertainty signal,
+Bituhim6_code_1,Bituhim6,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim6_code_2,Bituhim6,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim6_code_3,Bituhim6,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim6_missing,Bituhim6,indicator,one-hot insurance answer: yes/no/IDK/no need,
+Bituhim6_idk_strong_signal,Bituhim6,indicator,IDK is a strong insurance uncertainty signal,
+NosCas1_knowledge_score,NosCas1,semantic_score,"financial knowledge score: yes correct, IDK middle, no lowest",
+NosCas1_knowledge_score_missing,NosCas1,indicator,missing indicator for NosCas1,
+NosCas1_knowledge_score_idk,NosCas1,indicator,IDK indicator for NosCas1,
+NosCas2_knowledge_score,NosCas2,semantic_score,"financial knowledge score: yes correct, IDK middle, no lowest",
+NosCas2_knowledge_score_missing,NosCas2,indicator,missing indicator for NosCas2,
+NosCas2_knowledge_score_idk,NosCas2,indicator,IDK indicator for NosCas2,
+NosCas3_knowledge_score,NosCas3,semantic_score,"financial knowledge score: yes correct, IDK middle, no lowest",
+NosCas3_knowledge_score_missing,NosCas3,indicator,missing indicator for NosCas3,
+NosCas3_knowledge_score_idk,NosCas3,indicator,IDK indicator for NosCas3,
+NosCas4_knowledge_score,NosCas4,semantic_score,"financial knowledge score: yes correct, IDK middle, no lowest",
+NosCas4_knowledge_score_missing,NosCas4,indicator,missing indicator for NosCas4,
+NosCas4_knowledge_score_idk,NosCas4,indicator,IDK indicator for NosCas4,
+interest_calc_1_score,HishuvRibit,semantic_score,Q21 score: 1020 highest; 1000-1500 good; IDK middle; >1500 low; <1000 lowest,
+interest_calc_1_idk,HishuvRibit,indicator,Q21 IDK code indicator,
+interest_calc_1_missing,HishuvRibit,indicator,Q21 missing indicator,
+interest_calc_2_score,HishuvRibitDribit,semantic_score,Q22 score order: 1 > 2 > 3 > 5 > 4,
+interest_calc_2_score_missing,HishuvRibitDribit,indicator,missing indicator for HishuvRibitDribit,
+interest_calc_2_score_idk,HishuvRibitDribit,indicator,IDK indicator for HishuvRibitDribit,
+saving_program_interest_score,ShiurRibitBank,semantic_score,Q23 score order: 2 > 3 > 1 > 4,
+saving_program_interest_score_missing,ShiurRibitBank,indicator,missing indicator for ShiurRibitBank,
+saving_program_interest_score_idk,ShiurRibitBank,indicator,IDK indicator for ShiurRibitBank,
+HipusM1_info_search_score,HipusM1,semantic_score,Q24 information-search frequency score: higher is better,
+HipusM1_info_search_score_missing,HipusM1,indicator,missing indicator for HipusM1,
+HipusM2_info_search_score,HipusM2,semantic_score,Q24 information-search frequency score: higher is better,
+HipusM2_info_search_score_missing,HipusM2,indicator,missing indicator for HipusM2,
+HipusM3_info_search_score,HipusM3,semantic_score,Q24 information-search frequency score: higher is better,
+HipusM3_info_search_score_missing,HipusM3,indicator,missing indicator for HipusM3,
+HipusM4_info_search_score,HipusM4,semantic_score,Q24 information-search frequency score: higher is better,
+HipusM4_info_search_score_missing,HipusM4,indicator,missing indicator for HipusM4,
+HipusM5_info_search_score,HipusM5,semantic_score,Q24 information-search frequency score: higher is better,
+HipusM5_info_search_score_missing,HipusM5,indicator,missing indicator for HipusM5,
+HipusM6_info_search_score,HipusM6,semantic_score,Q24 information-search frequency score: higher is better,
+HipusM6_info_search_score_missing,HipusM6,indicator,missing indicator for HipusM6,
+HipusM7_info_search_score,HipusM7,semantic_score,Q24 information-search frequency score: higher is better,
+HipusM7_info_search_score_missing,HipusM7,indicator,missing indicator for HipusM7,
+HipusM8_info_search_score,HipusM8,semantic_score,Q24 information-search frequency score: higher is better,
+HipusM8_info_search_score_missing,HipusM8,indicator,missing indicator for HipusM8,
+NoseCaspiM1_attitude_score,NoseCaspiM1,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero,
+NoseCaspiM1_attitude_score_missing,NoseCaspiM1,indicator,missing indicator for NoseCaspiM1,
+NoseCaspiM1_attitude_score_not_relevant,NoseCaspiM1,indicator,not-relevant indicator for NoseCaspiM1,
+NoseCaspiM3_attitude_score,NoseCaspiM3,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero,
+NoseCaspiM3_attitude_score_missing,NoseCaspiM3,indicator,missing indicator for NoseCaspiM3,
+NoseCaspiM3_attitude_score_not_relevant,NoseCaspiM3,indicator,not-relevant indicator for NoseCaspiM3,
+NoseCaspiM5_attitude_score,NoseCaspiM5,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero,
+NoseCaspiM5_attitude_score_missing,NoseCaspiM5,indicator,missing indicator for NoseCaspiM5,
+NoseCaspiM5_attitude_score_not_relevant,NoseCaspiM5,indicator,not-relevant indicator for NoseCaspiM5,
+NoseCaspiM6_attitude_score,NoseCaspiM6,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero,
+NoseCaspiM6_attitude_score_missing,NoseCaspiM6,indicator,missing indicator for NoseCaspiM6,
+NoseCaspiM6_attitude_score_not_relevant,NoseCaspiM6,indicator,not-relevant indicator for NoseCaspiM6,
+NoseCaspiM7_attitude_score,NoseCaspiM7,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero,
+NoseCaspiM7_attitude_score_missing,NoseCaspiM7,indicator,missing indicator for NoseCaspiM7,
+NoseCaspiM7_attitude_score_not_relevant,NoseCaspiM7,indicator,not-relevant indicator for NoseCaspiM7,
+NoseCaspiM8_attitude_score,NoseCaspiM8,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero,
+NoseCaspiM8_attitude_score_missing,NoseCaspiM8,indicator,missing indicator for NoseCaspiM8,
+NoseCaspiM8_attitude_score_not_relevant,NoseCaspiM8,indicator,not-relevant indicator for NoseCaspiM8,
+NoseCaspiM10_attitude_score,NoseCaspiM10,semantic_score,Q25 positive statement score: strongly agree highest; not relevant zero,
+NoseCaspiM10_attitude_score_missing,NoseCaspiM10,indicator,missing indicator for NoseCaspiM10,
+NoseCaspiM10_attitude_score_not_relevant,NoseCaspiM10,indicator,not-relevant indicator for NoseCaspiM10,
+NoseCaspiM2_attitude_score,NoseCaspiM2,semantic_score,Q25 negative statement score: strongly disagree highest; not relevant zero,
+NoseCaspiM2_attitude_score_missing,NoseCaspiM2,indicator,missing indicator for NoseCaspiM2,
+NoseCaspiM2_attitude_score_not_relevant,NoseCaspiM2,indicator,not-relevant indicator for NoseCaspiM2,
+NoseCaspiM4_attitude_score,NoseCaspiM4,semantic_score,Q25 negative statement score: strongly disagree highest; not relevant zero,
+NoseCaspiM4_attitude_score_missing,NoseCaspiM4,indicator,missing indicator for NoseCaspiM4,
+NoseCaspiM4_attitude_score_not_relevant,NoseCaspiM4,indicator,not-relevant indicator for NoseCaspiM4,
+NoseCaspiM9_attitude_score,NoseCaspiM9,semantic_score,Q25 negative statement score: strongly disagree highest; not relevant zero,
+NoseCaspiM9_attitude_score_missing,NoseCaspiM9,indicator,missing indicator for NoseCaspiM9,
+NoseCaspiM9_attitude_score_not_relevant,NoseCaspiM9,indicator,not-relevant indicator for NoseCaspiM9,
+knowledge_expansion_topics_count,"NoseCaspiHarhavaNihul,NoseCaspiHarhavaCarhanut,NoseCaspiHarhavaHalvaot,NoseCaspiHarhavaHishonot,NoseCaspiHarhavaBituhim,NoseCaspiHarhavaMashkanta",aggregate_count,count of selected knowledge-expansion topics among fields 1-6,
+knowledge_expansion_no_need,NoseCaspiHarhavaEynCoreh,indicator,selected no need to expand financial knowledge,
+MekorotM1_code_1,MekorotM1,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM1_code_2,MekorotM1,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM1_code_3,MekorotM1,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM1_missing,MekorotM1,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM1_idk,MekorotM1,indicator,Q27 source-interest IDK indicator,
+MekorotM2_code_1,MekorotM2,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM2_code_2,MekorotM2,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM2_code_3,MekorotM2,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM2_missing,MekorotM2,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM2_idk,MekorotM2,indicator,Q27 source-interest IDK indicator,
+MekorotM3_code_1,MekorotM3,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM3_code_2,MekorotM3,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM3_code_3,MekorotM3,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM3_missing,MekorotM3,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM3_idk,MekorotM3,indicator,Q27 source-interest IDK indicator,
+MekorotM4_code_1,MekorotM4,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM4_code_2,MekorotM4,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM4_code_3,MekorotM4,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM4_missing,MekorotM4,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM4_idk,MekorotM4,indicator,Q27 source-interest IDK indicator,
+MekorotM5_code_1,MekorotM5,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM5_code_2,MekorotM5,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM5_code_3,MekorotM5,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM5_missing,MekorotM5,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM5_idk,MekorotM5,indicator,Q27 source-interest IDK indicator,
+MekorotM6_code_1,MekorotM6,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM6_code_2,MekorotM6,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM6_code_3,MekorotM6,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM6_missing,MekorotM6,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM6_idk,MekorotM6,indicator,Q27 source-interest IDK indicator,
+MekorotM7_code_1,MekorotM7,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM7_code_2,MekorotM7,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM7_code_3,MekorotM7,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM7_missing,MekorotM7,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM7_idk,MekorotM7,indicator,Q27 source-interest IDK indicator,
+MekorotM8_code_1,MekorotM8,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM8_code_2,MekorotM8,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM8_code_3,MekorotM8,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM8_missing,MekorotM8,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM8_idk,MekorotM8,indicator,Q27 source-interest IDK indicator,
+MekorotM9_code_1,MekorotM9,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM9_code_2,MekorotM9,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM9_code_3,MekorotM9,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM9_missing,MekorotM9,indicator,Q27 non-ordinal source-interest one-hot,
+MekorotM9_idk,MekorotM9,indicator,Q27 source-interest IDK indicator,
+preferred_info_source_code_1,MakorMuadaf,indicator,Q28 preferred information source one-hot,
+preferred_info_source_code_2,MakorMuadaf,indicator,Q28 preferred information source one-hot,
+preferred_info_source_code_8,MakorMuadaf,indicator,Q28 preferred information source one-hot,
+preferred_info_source_missing,MakorMuadaf,indicator,Q28 preferred information source one-hot,
+preferred_source_number_code_1,MakorMahooM,indicator,Q28 selected source number one-hot,
+preferred_source_number_code_2,MakorMahooM,indicator,Q28 selected source number one-hot,
+preferred_source_number_code_3,MakorMahooM,indicator,Q28 selected source number one-hot,
+preferred_source_number_code_4,MakorMahooM,indicator,Q28 selected source number one-hot,
+preferred_source_number_code_5,MakorMahooM,indicator,Q28 selected source number one-hot,
+preferred_source_number_code_6,MakorMahooM,indicator,Q28 selected source number one-hot,
+preferred_source_number_code_7,MakorMahooM,indicator,Q28 selected source number one-hot,
+preferred_source_number_code_8,MakorMahooM,indicator,Q28 selected source number one-hot,
+preferred_source_number_code_9,MakorMahooM,indicator,Q28 selected source number one-hot,
+preferred_source_number_missing,MakorMahooM,indicator,Q28 selected source number one-hot,
+mortgage_knowledge_score,RamatYedaMash,semantic_score,"Q29 mortgage knowledge score: 1 highest, 5 lowest",
+mortgage_knowledge_score_missing,RamatYedaMash,indicator,missing indicator for RamatYedaMash,
+idk_total,"OverVaAcher_idk,KartisAshP1_idk,KartisAshP2_idk,KartisAshP3_idk,KartisAshP4_idk,KartisAshS1_idk,KartisAshS2_idk,KartisAshS3_idk,KartisAshS4_idk,KartisAshS5_idk,KartisAshS6_idk,KartisAshS7_idk,KartisAshNechsam_idk,Halvaa2_idk,Halvaa3_idk,Halvaa4_idk,Halvaa5_idk,Halvaa6_idk,Halvaa7_idk,Halvaa8_idk,Halvaa9_idk,Hashkaot1_idk,Hashkaot2_idk,Hashkaot3_idk,Hashkaot4_idk,Hashkaot5_idk,Hashkaot6_idk,Hashkaot7_idk,Hashkaot8_idk,Hashkaot9_idk,SherutY1_idk,SherutY2_idk,SherutY3_idk,SherutY4_idk,SherutY5_idk,SherutY6_idk,HeshbonMaakav_idk,HashkaotMaclit_idk,mortgage_info_source_idk,Bituhim1_idk_strong_signal,Bituhim2_idk_strong_signal,Bituhim3_idk_strong_signal,Bituhim4_idk_strong_signal,Bituhim5_idk_strong_signal,Bituhim6_idk_strong_signal,NosCas1_knowledge_score_idk,NosCas2_knowledge_score_idk,NosCas3_knowledge_score_idk,NosCas4_knowledge_score_idk,interest_calc_1_idk,interest_calc_2_score_idk,saving_program_interest_score_idk,MekorotM1_idk,MekorotM2_idk,MekorotM3_idk,MekorotM4_idk,MekorotM5_idk,MekorotM6_idk,MekorotM7_idk,MekorotM8_idk,MekorotM9_idk",aggregate_count,total number of IDK indicators across engineered features,
+idk_rate,"OverVaAcher_idk,KartisAshP1_idk,KartisAshP2_idk,KartisAshP3_idk,KartisAshP4_idk,KartisAshS1_idk,KartisAshS2_idk,KartisAshS3_idk,KartisAshS4_idk,KartisAshS5_idk,KartisAshS6_idk,KartisAshS7_idk,KartisAshNechsam_idk,Halvaa2_idk,Halvaa3_idk,Halvaa4_idk,Halvaa5_idk,Halvaa6_idk,Halvaa7_idk,Halvaa8_idk,Halvaa9_idk,Hashkaot1_idk,Hashkaot2_idk,Hashkaot3_idk,Hashkaot4_idk,Hashkaot5_idk,Hashkaot6_idk,Hashkaot7_idk,Hashkaot8_idk,Hashkaot9_idk,SherutY1_idk,SherutY2_idk,SherutY3_idk,SherutY4_idk,SherutY5_idk,SherutY6_idk,HeshbonMaakav_idk,HashkaotMaclit_idk,mortgage_info_source_idk,Bituhim1_idk_strong_signal,Bituhim2_idk_strong_signal,Bituhim3_idk_strong_signal,Bituhim4_idk_strong_signal,Bituhim5_idk_strong_signal,Bituhim6_idk_strong_signal,NosCas1_knowledge_score_idk,NosCas2_knowledge_score_idk,NosCas3_knowledge_score_idk,NosCas4_knowledge_score_idk,interest_calc_1_idk,interest_calc_2_score_idk,saving_program_interest_score_idk,MekorotM1_idk,MekorotM2_idk,MekorotM3_idk,MekorotM4_idk,MekorotM5_idk,MekorotM6_idk,MekorotM7_idk,MekorotM8_idk,MekorotM9_idk",aggregate_rate,share of IDK indicators across engineered features,
+q20_knowledge_mean,"NosCas1_knowledge_score,NosCas2_knowledge_score,NosCas3_knowledge_score,NosCas4_knowledge_score",aggregate_score,row-wise mean of related semantic scores,Q20 financial knowledge mean
+q24_info_search_mean,"HipusM1_info_search_score,HipusM2_info_search_score,HipusM3_info_search_score,HipusM4_info_search_score,HipusM5_info_search_score,HipusM6_info_search_score,HipusM7_info_search_score,HipusM8_info_search_score",aggregate_score,row-wise mean of related semantic scores,Q24 information search mean
+q25_attitude_mean,"NoseCaspiM1_attitude_score,NoseCaspiM2_attitude_score,NoseCaspiM3_attitude_score,NoseCaspiM4_attitude_score,NoseCaspiM5_attitude_score,NoseCaspiM6_attitude_score,NoseCaspiM7_attitude_score,NoseCaspiM8_attitude_score,NoseCaspiM9_attitude_score,NoseCaspiM10_attitude_score",aggregate_score,row-wise mean of related semantic scores,Q25 financial attitude mean
+financial_knowledge_mean,"q20_knowledge_mean,interest_calc_1_score,interest_calc_2_score,saving_program_interest_score,mortgage_knowledge_score",aggregate_score,row-wise mean of related semantic scores,combined financial knowledge proxy
